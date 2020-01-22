@@ -24,10 +24,10 @@ public class Robot extends TimedRobot {
 
   
    // Initializing specific hardware components
-   Victor LeftDrive = new Victor(1);
-   Victor RightDrive = new Victor(2);
+   Victor LeftDrive = new Victor(0);
+   Victor RightDrive = new Victor(1);
    Joystick controller = new Joystick(0);
-   DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+  // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
 
   /**
    * This function is run when the robot is first started up and should be
@@ -76,6 +76,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    /*
     if (controller.getRawButton(2)) {
       kobe.set(DoubleSolenoid.Value.kForward);
   }
@@ -86,6 +87,12 @@ public class Robot extends TimedRobot {
   if (controller.getRawButton(5)) {
       kobe.set(DoubleSolenoid.Value.kReverse);
   }
+  */
+    //Getting speed for each drive from joysticks
+    LeftDrive.set(controller.getRawAxis(1));
+    RightDrive.set(controller.getRawAxis(5));
+
+    
 
   }
 
