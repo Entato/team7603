@@ -99,6 +99,7 @@ public class Robot extends TimedRobot {
 
     // When button is pressed, the shooter motors will run
 
+    /*
     if (controller.getRawButton(1)) {
       shooter1.set(1);
       shooter2.set(-1);
@@ -106,6 +107,7 @@ public class Robot extends TimedRobot {
       shooter1.set(0);
       shooter2.set(0);
     }
+    */
 
     if (controller.getRawButtonPressed(4)){
       shooting = true;
@@ -114,19 +116,20 @@ public class Robot extends TimedRobot {
 
     if (shooting) {
 
-      // printing to dashboard
-
-      LeftDrive.set(-1);
-      RightDrive.set(-1);
-
       deltaTime = Calendar.getInstance().getTimeInMillis() - startTime;
 
       SmartDashboard.putNumber("deltaTime", deltaTime);
+      SmartDashboard.putBoolean("boolean", deltaTime >= 3000);
       if (deltaTime >= 3000) {
 
         LeftDrive.set(0);
         RightDrive.set(0);
-        SmartDashboard.putBoolean("a", true);
+        shooter1.set(1);
+        shooter2.set(-1);
+      } else {
+        
+        LeftDrive.set(-1);
+        RightDrive.set(-1);
       }
     }
     
