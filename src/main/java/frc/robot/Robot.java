@@ -7,11 +7,14 @@
 
 package frc.robot;
 
+import java.util.Calendar;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +32,11 @@ public class Robot extends TimedRobot {
   Victor shooter2 = new Victor(3);
   Joystick controller = new Joystick(0);
   // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+
+  // Variables used for shooting and adjusting
+  long startTime = 0;
+  long deltaTime = 0;
+  boolean shooting = false;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -89,12 +97,7 @@ public class Robot extends TimedRobot {
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
 
-<<<<<<< HEAD
-    
-    
-=======
     // When button is pressed, the shooter motors will run
->>>>>>> 0254959624265d50bc29d9c835fe8a05a48c3b73
 
     if (controller.getRawButton(1)) {
       shooter1.set(1);
@@ -102,6 +105,35 @@ public class Robot extends TimedRobot {
     } else {
       shooter1.set(0);
       shooter2.set(0);
+    }
+
+    if (controller.getRawButtonPressed(4)){
+      shooting = true;
+      startTime = Calendar.getInstance().getTimeInMillis();
+    }
+
+    if (shooting) {
+
+      // printing to dashboard
+
+      LeftDrive.set(-1);
+      RightDrive.set(-1);
+
+      deltaTime = Calendar.getInstance().getTimeInMillis() - startTime;
+
+      SmartDashboard.putNumber("deltaTime", deltaTime);
+      if (deltaTime >= 3000) {
+
+        LeftDrive.set(0);
+        RightDrive.set(0);
+        SmartDashboard.putBoolean("a", true);
+      }
+    }
+    
+    if (controller.getRawButtonReleased(4)) {
+      LeftDrive.set(0);
+      RightDrive.set(0);
+      shooting = false;
     }
   }
 
