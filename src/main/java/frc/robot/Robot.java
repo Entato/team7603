@@ -22,28 +22,30 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  */
 public class Robot extends TimedRobot {
 
-  
-   // Initializing specific hardware components
-   Victor LeftDrive = new Victor(0);
-   Victor RightDrive = new Victor(1);
-   Joystick controller = new Joystick(0);
+  // Initializing specific hardware components
+  Victor LeftDrive = new Victor(0);
+  Victor RightDrive = new Victor(1);
+  Victor shooter1 = new Victor(2);
+  Victor shooter2 = new Victor(3);
+  Joystick controller = new Joystick(0);
   // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
 
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
   }
 
   /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
   public void robotPeriodic() {
@@ -51,14 +53,15 @@ public class Robot extends TimedRobot {
 
   /**
    * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString line to get the auto name from the text box below the Gyro
+   * between different autonomous modes using the dashboard. The sendable chooser
+   * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
+   * remove all of the chooser code and uncomment the getString line to get the
+   * auto name from the text box below the Gyro
    *
-   * <p>You can add additional auto modes by adding additional comparisons to
-   * the switch structure below with additional strings. If using the
-   * SendableChooser make sure to add them to the chooser code above as well.
+   * <p>
+   * You can add additional auto modes by adding additional comparisons to the
+   * switch structure below with additional strings. If using the SendableChooser
+   * make sure to add them to the chooser code above as well.
    */
   @Override
   public void autonomousInit() {
@@ -77,24 +80,29 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     /*
-    if (controller.getRawButton(2)) {
-      kobe.set(DoubleSolenoid.Value.kForward);
-  }
- 
-  if (controller.getRawButton(3)) {
-      kobe.set(DoubleSolenoid.Value.kOff);
-  }
-  if (controller.getRawButton(5)) {
-      kobe.set(DoubleSolenoid.Value.kReverse);
-  }
-  */
-    //Getting speed for each drive from joysticks
+     * if (controller.getRawButton(2)) { kobe.set(DoubleSolenoid.Value.kForward); }
+     * 
+     * if (controller.getRawButton(3)) { kobe.set(DoubleSolenoid.Value.kOff); } if
+     * (controller.getRawButton(5)) { kobe.set(DoubleSolenoid.Value.kReverse); }
+     */
+    // Getting speed for each drive from joysticks
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
 
+<<<<<<< HEAD
     
     
+=======
+    // When button is pressed, the shooter motors will run
+>>>>>>> 0254959624265d50bc29d9c835fe8a05a48c3b73
 
+    if (controller.getRawButton(1)) {
+      shooter1.set(1);
+      shooter2.set(-1);
+    } else {
+      shooter1.set(0);
+      shooter2.set(0);
+    }
   }
 
   /**
