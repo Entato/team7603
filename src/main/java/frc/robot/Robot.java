@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.I2C;
+import com.revrobotics.ColorSensorV3;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,7 +34,12 @@ public class Robot extends TimedRobot {
   Victor shooter1 = new Victor(2);
   Victor shooter2 = new Victor(3);
   Joystick controller = new Joystick(0);
-  DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+ // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+  
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+
 
   //Buttons
   public static final int buttonA = 1;
@@ -99,13 +107,50 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-     if (controller.getRawButton(4)) { kobe.set(DoubleSolenoid.Value.kForward); } 
+  //   if (controller.getRawButton(4)) { kobe.set(DoubleSolenoid.Value.kForward); } 
      //if (controller.getRawButton(3)) { kobe.set(DoubleSolenoid.Value.kOff); } 
-     if(controller.getRawButton(1)) { kobe.set(DoubleSolenoid.Value.kReverse); }
+   //  if(controller.getRawButton(1)) { kobe.set(DoubleSolenoid.Value.kReverse); }
     
      // Getting speed for each drive from joysticks
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
+
+    Color detectedColor = m_colorSensor.getColor();
+
+    /**
+     * The sensor returns a raw IR value of the infrared light detected.
+     */
+    double IR = m_colorSensor.getIR();
+
+    /**
+     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
+     * sensor.
+     */
+    double red = (detectedColor.red*3);
+    double green = (detectedColor.green*2);
+    double blue = (detectedColor.blue*4);
+    String color = "null";
+
+    SmartDashboard.putNumber("Red", detectedColor.red*3);
+    SmartDashboard.putNumber("Green", detectedColor.green*2);
+    SmartDashboard.putNumber("Blue", detectedColor.blue*4);
+    if(red > 1.14 && red <1.26 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4){
+      color ="Yellow";
+    }
+    else if (red > green && red > blue){
+      color = "Red";
+    }
+    else if(green > red && green > blue){
+      color = "Green";
+    }
+    else if(blue > red && blue > green){
+      color = "Blue";
+    }
+
+    SmartDashboard.putString("IR",color);
+    int proximity = m_colorSensor.getProximity();
+
+    SmartDashboard.putNumber("Proximity", proximity);
   }
     // When button is pressed, the shooter motors will run
 
