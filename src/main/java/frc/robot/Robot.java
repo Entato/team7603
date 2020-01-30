@@ -31,7 +31,19 @@ public class Robot extends TimedRobot {
   Victor shooter1 = new Victor(2);
   Victor shooter2 = new Victor(3);
   Joystick controller = new Joystick(0);
-  // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+  DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+
+  //Buttons
+  public static final int buttonA = 1;
+    public static final int buttonB = 2;
+    public static final int buttonX = 3;
+    public static final int buttonY = 4;
+    public static final int buttonLB = 5;
+    public static final int buttonRB = 6;
+    public static final int buttonBACK = 7;
+    public static final int buttonSTART = 8;
+    public static final int buttonLJ = 9;
+    public static final int buttonRJ = 10;
 
   // Variables used for shooting and adjusting
   long startTime = 0;
@@ -87,28 +99,27 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    /*
-     * if (controller.getRawButton(2)) { kobe.set(DoubleSolenoid.Value.kForward); }
-     * 
-     * if (controller.getRawButton(3)) { kobe.set(DoubleSolenoid.Value.kOff); } if
-     * (controller.getRawButton(5)) { kobe.set(DoubleSolenoid.Value.kReverse); }
-     */
-    // Getting speed for each drive from joysticks
+     if (controller.getRawButton(4)) { kobe.set(DoubleSolenoid.Value.kForward); } 
+     //if (controller.getRawButton(3)) { kobe.set(DoubleSolenoid.Value.kOff); } 
+     if(controller.getRawButton(1)) { kobe.set(DoubleSolenoid.Value.kReverse); }
+    
+     // Getting speed for each drive from joysticks
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
-
+  }
     // When button is pressed, the shooter motors will run
 
     /*
     if (controller.getRawButton(1)) {
       shooter1.set(1);
       shooter2.set(-1);
-    } else {
+    } else {9                                               
       shooter1.set(0);
       shooter2.set(0);
     }
     */
 
+    /*
     if (controller.getRawButtonPressed(4)){
       shooting = true;
       startTime = Calendar.getInstance().getTimeInMillis();
