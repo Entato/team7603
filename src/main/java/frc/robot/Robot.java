@@ -8,6 +8,7 @@
 package frc.robot;
 
 import java.util.Calendar;
+import java.util.Set;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
@@ -31,10 +32,15 @@ public class Robot extends TimedRobot {
   // Initializing specific hardware components
   Victor LeftDrive = new Victor(0);
   Victor RightDrive = new Victor(1);
-  Victor shooter1 = new Victor(2);
-  Victor shooter2 = new Victor(3);
+  Victor shooter1 = new Victor(3);
+  Victor shooter2 = new Victor(2);
   Joystick controller = new Joystick(0);
  // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
+  
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+
 
   //Buttons
   public static final int buttonA = 1;
@@ -100,6 +106,12 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
+  int counter = 0;
+  int counter2 = 0;
+  String startcolor = "null";
+  String tempcolor2 = "null";
+  String tempcolor = "null";
+  String color = "null";
   @Override
   public void teleopPeriodic() {
   //   if (controller.getRawButton(4)) { kobe.set(DoubleSolenoid.Value.kForward); } 
@@ -109,7 +121,71 @@ public class Robot extends TimedRobot {
      // Getting speed for each drive from joysticks
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
+    Color detectedColor = m_colorSensor.getColor();
+    
+
+    
+    /**
+     * The sensor returns a raw IR value of the infrared light detected.
+     */
+    double IR = m_colorSensor.getIR();
+
+    /**
+     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
+     * sensor.
+     */
+    double red = (detectedColor.red*3);
+    double green = (detectedColor.green*2);
+    double blue = (detectedColor.blue*4);
+    double speed = 0.5;
+    SmartDashboard.putNumber("Red", detectedColor.red*3);
+    SmartDashboard.putNumber("Green", detectedColor.green*2);
+    SmartDashboard.putNumber("Blue", detectedColor.blue*4);
+    if(red > 0.93 && red < 1.05 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4){
+      color ="Yellow";
+      if (counter == 1  && tempcolor != color){
+        counter2++;
+        tempcolor = color;
+      }
+
+    }
+    else if (red > green && red > blue){
+      color = "Red";
+      if (counter == 1  && tempcolor != color){
+        counter2++;
+        tempcolor = color;
+      }
+    }
+    else if(green > red && green > blue){
+      color = "Green";
+      if (counter == 1  && tempcolor != color){
+        counter2++;
+        tempcolor = color;
+      }
+    }
+    else if(blue > red && blue > green){
+      color = "Blue";
+      if (counter == 1  && tempcolor != color){
+        counter2++;
+        tempcolor = color;
+      }
+    }
+    
+    if (color!= null && counter == 0){
+      startcolor = color;
+      counter++; 
+    }
+    SmartDashboard.putString("IR",color);
+    int proximity = m_colorSensor.getProximity();
+    SmartDashboard.putNumber("Switches", counter2);
+    SmartDashboard.putString("startcolor", startcolor);
+    shooter2.set(speed);
+    if(counter2 > 8/* 2 rotations */ && color == "Red"){
+      shooter2.setSpeed(speed);
+      startcolor = "stop";
+    }
   }
+
     // When button is pressed, the shooter motors will run
 
     /*
@@ -127,15 +203,11 @@ public class Robot extends TimedRobot {
       shooting = true;
       startTime = Calendar.getInstance().getTimeInMillis();
     }
-
     if (shooting) {
-
       deltaTime = Calendar.getInstance().getTimeInMillis() - startTime;
-
       SmartDashboard.putNumber("deltaTime", deltaTime);
       SmartDashboard.putBoolean("boolean", deltaTime >= 3000);
       if (deltaTime >= 3000) {
-
         LeftDrive.set(0);
         RightDrive.set(0);
         shooter1.set(1);
@@ -153,7 +225,6 @@ public class Robot extends TimedRobot {
       shooting = false;
     }
   }
-
   /**
    * This function is called periodically during test mode.
    */
