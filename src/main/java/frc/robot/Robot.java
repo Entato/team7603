@@ -35,11 +35,6 @@ public class Robot extends TimedRobot {
   Victor shooter2 = new Victor(3);
   Joystick controller = new Joystick(0);
  // DoubleSolenoid kobe = new DoubleSolenoid(0,1);
-  
-  private final I2C.Port i2cPort = I2C.Port.kOnboard;
-  
-  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-
 
   //Buttons
   public static final int buttonA = 1;
@@ -114,43 +109,6 @@ public class Robot extends TimedRobot {
      // Getting speed for each drive from joysticks
     LeftDrive.set(controller.getRawAxis(1));
     RightDrive.set(controller.getRawAxis(5));
-
-    Color detectedColor = m_colorSensor.getColor();
-
-    /**
-     * The sensor returns a raw IR value of the infrared light detected.
-     */
-    double IR = m_colorSensor.getIR();
-
-    /**
-     * Open Smart Dashboard or Shuffleboard to see the color detected by the 
-     * sensor.
-     */
-    double red = (detectedColor.red*3);
-    double green = (detectedColor.green*2);
-    double blue = (detectedColor.blue*4);
-    String color = "null";
-
-    SmartDashboard.putNumber("Red", detectedColor.red*3);
-    SmartDashboard.putNumber("Green", detectedColor.green*2);
-    SmartDashboard.putNumber("Blue", detectedColor.blue*4);
-    if(red > 1.14 && red <1.26 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4){
-      color ="Yellow";
-    }
-    else if (red > green && red > blue){
-      color = "Red";
-    }
-    else if(green > red && green > blue){
-      color = "Green";
-    }
-    else if(blue > red && blue > green){
-      color = "Blue";
-    }
-
-    SmartDashboard.putString("IR",color);
-    int proximity = m_colorSensor.getProximity();
-
-    SmartDashboard.putNumber("Proximity", proximity);
   }
     // When button is pressed, the shooter motors will run
 
