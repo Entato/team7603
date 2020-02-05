@@ -151,18 +151,19 @@ public class Robot extends TimedRobot {
     int proximity = m_colorSensor.getProximity();
 
     SmartDashboard.putNumber("Proximity", proximity);
-  }
-    // When button is pressed, the shooter motors will run
-
-    /*
-    if (controller.getRawButton(1)) {
+    if(controller.getRawButton(1)){
       shooter1.set(1);
       shooter2.set(-1);
-    } else {9                                               
+    } else {                                         
       shooter1.set(0);
       shooter2.set(0);
     }
-    */
+  }
+    // When button is pressed, the shooter motors will run
+
+    
+
+    
 
     /*
     if (controller.getRawButtonPressed(4)){
