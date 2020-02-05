@@ -10,8 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.Joystick;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -23,12 +23,18 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+  //controller
+  private final Joystick controller = new Joystick(Constants.joystickPort);
+
+  //Subsystems
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final DriveChain driveChain = new DriveChain();
 
+  //Commands
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
 
-  private final Joystick controller = new Joystick(0);
+
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -46,7 +52,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     JoystickButton exampleButton = new JoystickButton(controller, 1);
-    exampleButton.whenPressed(m_autoCommand);
+    exampleButton.whenHeld(m_autoCommand);
+
+    JoystickButton lAxis = new JoystickButton(controller, Constants.axisLY);
+    lAxis.whenHeld(driveCommand);
+    JoystickButton rAxis = new JoystickButton(controller, Constants.axisRY);
+    rAxis.whenHeld(driveCommand);
   }
 
   /**

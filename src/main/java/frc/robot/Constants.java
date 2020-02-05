@@ -1,19 +1,48 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
-/**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants.  This class should not be used for any other purpose.  All constants should be
- * declared globally (i.e. public static).  Do not put anything functional in this class.
- *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
- */
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public final class Constants {
+    public static final double speedLimit = 0.6;
+    
+    //Joystick
+    public static final int joystickPort = 0;
+
+    //Solenoid
+    public static final DoubleSolenoid solenoid = new DoubleSolenoid(0,1);
+
+    //VictorSP ports
+    public static final int lDrive = 0;
+    public static final int rDrive = 1;
+    public static final int shooter1 = 2;
+    public static final int shooter2 = 3;
+    public static final int spinner = 4;
+    public static final int intake = 5;
+    public static final int belt = 6;
+    public static final int winch = 7;
+    public static final int scissorLift = 8;
+
+    //controller button values
+    public static final int buttonA = 1;
+    public static final int buttonB = 2;
+    public static final int buttonX = 3;
+    public static final int buttonY = 4;
+    public static final int buttonLB = 5;
+    public static final int buttonRB = 6;
+    public static final int buttonBACK = 7;
+    public static final int buttonSTART = 8;
+    public static final int buttonLJ = 9;
+    public static final int buttonRJ = 10;
+
+    //controller axis values
+    public static final int axisLX = 0;
+    public static final int axisLY = 1;
+    public static final int LTrigger = 2;
+    public static final int RTrigger = 3;
+    public static final int axisRX = 4;
+    public static final int axisRY = 5;
 }
