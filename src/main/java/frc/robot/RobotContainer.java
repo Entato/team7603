@@ -45,7 +45,7 @@ public class RobotContainer {
     rAxis.or(lAxis).whenActive(driveCommand);
     
     JoystickButton aButton = new JoystickButton(controller, 1);
-    aButton.whenPressed(m_colorSensor);
+    aButton.whenHeld(m_colorSensor);
 
   }
 

@@ -23,6 +23,7 @@ import com.revrobotics.ColorSensorV3;
 public class Spinner extends SubsystemBase {
     private final I2C.Port i2cPort = I2C.Port.kOnboard;
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+    private final Victor spinner = new Victor(Constants.spinner);
 
     /**
      * Creates a new ExampleSubsystem.
@@ -35,6 +36,15 @@ public class Spinner extends SubsystemBase {
     String spinning = "true";
 
     public Spinner() {
+    }
+    public void spin(){
+        spinner.set(1);
+    }
+    public void stopSpin(){
+        spinner.set(0);
+    }
+    public void sensor() {
+        spin();
         Color detectedColor = m_colorSensor.getColor();
         double IR = m_colorSensor.getIR();
         double red = (detectedColor.red * 3);
@@ -75,6 +85,7 @@ public class Spinner extends SubsystemBase {
             startColor = color;
             nullChecker = true;
         }
+
         SmartDashboard.putString("Current_Color", color);
         int proximity = m_colorSensor.getProximity();
         SmartDashboard.putNumber("Switches", switches);
@@ -83,6 +94,7 @@ public class Spinner extends SubsystemBase {
         if (color == "Red") {
             speed = (-0.4);// brake function
             spinning = "False";
+            stopSpin();
         }
     }
 
