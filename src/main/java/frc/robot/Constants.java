@@ -1,7 +1,10 @@
 package frc.robot;
 
 public final class Constants {
-    public static final double speedLimit = 0.6;
+    //Speed limits
+    public static final double driveLimit = 0.6;
+    public static final double shooterLimit = 1;
+    public static final double spinnerLimit = 1;
     
     //Joystick
     public static final int joystickPort = 0;
