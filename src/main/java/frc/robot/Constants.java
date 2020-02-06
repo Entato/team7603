@@ -1,19 +1,10 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 public final class Constants {
     public static final double speedLimit = 0.6;
     
     //Joystick
     public static final int joystickPort = 0;
-
-    //Solenoid
-    public static final DoubleSolenoid solenoid = new DoubleSolenoid(0,1);
 
     //VictorSP ports
     public static final int lDrive = 0;
