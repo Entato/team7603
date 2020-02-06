@@ -6,6 +6,8 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
+//this file creates the command and subsystem objects then binds them to a button on the controller
+//configureButtonBindings() method creates joystickbutton objects to call a command
 public class RobotContainer {
   //initialise every subystem and command objects at the top
 
@@ -25,7 +27,7 @@ public class RobotContainer {
     configureButtonBindings();
   }
 
-  //method for mapping buttons
+  //method for mapping buttons to call commands
   private void configureButtonBindings() {
 
     //create joystickbutton object with parameters of the joystick and the button ID
@@ -33,9 +35,11 @@ public class RobotContainer {
     //use joystickbutton, whenHeld(), whenPressed(), and whenReleased() methods to add commands
     exampleButton.whenHeld(m_autoCommand);
 
+    //left drive
     JoystickButton lAxis = new JoystickButton(controller, Constants.axisLY);
     lAxis.whenHeld(driveCommand);
 
+    //right drive
     JoystickButton rAxis = new JoystickButton(controller, Constants.axisRY);
     rAxis.whenHeld(driveCommand);
   }

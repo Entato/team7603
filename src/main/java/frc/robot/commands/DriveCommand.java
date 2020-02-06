@@ -12,6 +12,8 @@ import frc.robot.subsystems.DriveChain;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+//command object is used for calling the subsystems methods
+//this command sets the drives based on the controllers axis
 public class DriveCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveChain driveChain;

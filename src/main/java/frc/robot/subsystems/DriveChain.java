@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 //create subsystem classes with methods for all the functionality of the subsystem
+//eg drivechain will need to be able to set the speed of the drives
 public class DriveChain extends SubsystemBase {
   private final Victor LDrive = new Victor(Constants.lDrive);
   private final Victor RDrive = new Victor(Constants.rDrive);
