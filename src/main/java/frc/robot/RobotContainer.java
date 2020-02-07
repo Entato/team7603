@@ -14,11 +14,13 @@ public class RobotContainer {
 
   //Subsystems
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final Spinner m_shooter = new Spinner();
   private final DriveChain driveChain = new DriveChain();
   private final Shooter shooter = new Shooter();
 
   //Commands
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final SpinnerCommand m_colorSensor = new SpinnerCommand(m_shooter);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
 
@@ -35,7 +37,7 @@ public class RobotContainer {
     JoystickButton exampleButton = new JoystickButton(controller, 1);
     //use joystickbutton, whenHeld(), whenPressed(), and whenReleased() methods to add commands
     exampleButton.whenHeld(m_autoCommand);
-
+    
     //drives
     JoystickButton lAxis = new JoystickButton(controller, Constants.axisLY);
     JoystickButton rAxis = new JoystickButton(controller, Constants.axisRY);
@@ -45,6 +47,10 @@ public class RobotContainer {
     //shooter
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
+    
+    JoystickButton aButton = new JoystickButton(controller, 1);
+    aButton.whenHeld(m_colorSensor);
+
   }
 
   //used for calling the autonomous command
