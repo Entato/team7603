@@ -12,13 +12,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
-  private final Victor topShooter = new Victor(Constants.shooter1);
-  private final Victor bottomShooter = new Victor(Constants.shooter2);
+  private final Victor topShooter;
+  private final Victor bottomShooter;
   /**
    * Creates a new ExampleSubsystem.
    */
   public Shooter() {
-
+    topShooter = new Victor(Constants.shooter1);
+    bottomShooter = new Victor(Constants.shooter2);
   }
 
   @Override

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ExampleSubsystem extends SubsystemBase {
-  private final Victor victor = new Victor(0);
+  private final Victor victor = new Victor(9);
   /**
    * Creates a new ExampleSubsystem.
    */
