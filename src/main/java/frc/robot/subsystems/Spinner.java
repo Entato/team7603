@@ -37,12 +37,15 @@ public class Spinner extends SubsystemBase {
 
     public Spinner() {
     }
-    public void spin(){
+
+    public void spin() {
         spinner.set(1);
     }
-    public void stopSpin(){
+
+    public void stopSpin() {
         spinner.set(0);
     }
+
     public void sensor() {
         spin();
         Color detectedColor = m_colorSensor.getColor();
@@ -102,6 +105,5 @@ public class Spinner extends SubsystemBase {
     public void periodic() {
         // This method will be called once per scheduler run
     }
-
 
 }
