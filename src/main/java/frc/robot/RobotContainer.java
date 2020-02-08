@@ -14,13 +14,13 @@ public class RobotContainer {
 
   //Subsystems
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final Spinner m_shooter = new Spinner();
+  private final Spinner spinner = new Spinner();
   private final DriveChain driveChain = new DriveChain();
   private final Shooter shooter = new Shooter();
 
   //Commands
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final SpinnerCommand m_colorSensor = new SpinnerCommand(m_shooter);
+  private final SpinnerCommand m_colorSensor = new SpinnerCommand(spinner, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
 

@@ -25,16 +25,6 @@ public class Spinner extends SubsystemBase {
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
 
-    /**
-     * Creates a new ExampleSubsystem.
-     */
-    boolean nullChecker = true;
-    int switches = 0;
-    String startColor = "null";
-    String tempColor = "null";
-    String color = "null";
-    String spinning = "true";
-
     public Spinner() {
     }
     public void spin(){
@@ -43,58 +33,55 @@ public class Spinner extends SubsystemBase {
     public void stopSpin(){
         spinner.set(0);
     }
-    public void sensor() {
-        spin();
+    public String checkColor(){
         Color detectedColor = m_colorSensor.getColor();
         double IR = m_colorSensor.getIR();
         double red = (detectedColor.red * 3);
         double green = (detectedColor.green * 2);
         double blue = (detectedColor.blue * 4);
-        double speed = 0.5;
-        SmartDashboard.putNumber("Red", detectedColor.red * 3);
-        SmartDashboard.putNumber("Green", detectedColor.green * 2);
-        SmartDashboard.putNumber("Blue", detectedColor.blue * 4);
+        //Displays Colors 
+        SmartDashboard.putNumber("Red", red);
+        SmartDashboard.putNumber("Green", green);
+        SmartDashboard.putNumber("Blue", blue);
+        //Checks for Yellow
         if (red > 1.14 && red < 1.29 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4) {
-            color = "Yellow";
-            if (nullChecker == true && tempColor != color) {
-                switches++;
-                tempColor = color;
-            }
-
-        } else if (red > green && red > blue) {
-            color = "Red";
-            if (nullChecker == true && tempColor != color) {
-                switches++;
-                tempColor = color;
-            }
-        } else if (green > red && green > blue) {
-            color = "Green";
-            if (nullChecker == true && tempColor != color) {
-                switches++;
-                tempColor = color;
-            }
-        } else if (blue > red && blue > green) {
-            color = "Blue";
-            if (nullChecker == true && tempColor != color) {
-                switches++;
-                tempColor = color;
-            }
+            return "Yellow";
         }
-
-        if (color != null && nullChecker == false) {
-            startColor = color;
-            nullChecker = true;
+        //Checks for Red 
+        else if (red > green && red > blue) {
+            return "Red";
+        } 
+        //Checks for Green
+        else if (green > red && green > blue) {
+            return "Green"; 
+        } 
+        //Checks for Blue
+        else if (blue > red && blue > green) {
+            return "Blue";
         }
+        return null;
+    }
 
-        SmartDashboard.putString("Current_Color", color);
-        int proximity = m_colorSensor.getProximity();
-        SmartDashboard.putNumber("Switches", switches);
-        SmartDashboard.putString("Start_color", startColor);
-        SmartDashboard.putString("Spinning", spinning);
-        if (color == "Red") {
-            speed = (-0.4);// brake function
-            spinning = "False";
-            stopSpin();
+    //Method that does 1 full spinner revolution without stopping
+    public void spinOnce(){
+        int colorChanges = 0;
+        //Previous color (Initialized as starting color)
+        String oldColor = checkColor();
+        //Current color (currentColor being sensed)
+        String currentColor;
+
+        //One full revolution is 8 color changes
+        while (colorChanges < 8){
+            spin();
+            currentColor = checkColor();
+            //Checks when color changes
+            if (!(currentColor.equals(oldColor))){
+                //Adds to revolutions counter
+                colorChanges++;
+                //Changes current color to the "old color"
+                oldColor = currentColor;
+            }
+
         }
     }
 
