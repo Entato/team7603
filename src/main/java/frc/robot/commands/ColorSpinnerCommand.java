@@ -20,8 +20,12 @@ public class ColorSpinnerCommand extends CommandBase {
     Spinner spinner;
     String targetColor;
     //commands must take in a parameter of the subsystems they are using so they can access their methods
-    public ColorSpinnerCommand(Spinner m_shooter, String targetColor) {
+    public ColorSpinnerCommand(Spinner m_shooter) {
         spinner = m_shooter;
+    }
+
+    //Setter for target color
+    public void setTargetColor(String targetColor){
         this.targetColor = targetColor;
     }
 

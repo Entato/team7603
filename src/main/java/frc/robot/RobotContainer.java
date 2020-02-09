@@ -20,7 +20,8 @@ public class RobotContainer {
 
   //Commands
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final SpinnerCommand m_colorSensor = new SpinnerCommand(spinner, controller);
+  private final SpinnerCommand m_colorSensor = new SpinnerCommand(spinner); 
+  private final ColorSpinnerCommand m_colorSpinner = new ColorSpinnerCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
 
@@ -48,8 +49,17 @@ public class RobotContainer {
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
     
+    //Spinner
     JoystickButton aButton = new JoystickButton(controller, 1);
     aButton.whenHeld(m_colorSensor);
+
+    //Color FRC will give us
+    String frc_Color = "Red";
+    //Sets target color of command
+    m_colorSpinner.setTargetColor(frc_Color);
+
+    JoystickButton bButton = new JoystickButton(controller, 2);
+    bButton.whenHeld(m_colorSpinner);
 
   }
 
