@@ -10,11 +10,6 @@ package frc.robot.triggers;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
-/**
- * Like {@link JoystickButton}, but it checks for an analog axis being held
- * rather than a button press. This is primarily meant for triggers but you
- * could use it for a joystick axis just as easily.
- */
 public class AxisTrigger extends Button {
     private final GenericHID controller;
     private final int axisNum;
@@ -24,11 +19,6 @@ public class AxisTrigger extends Button {
         this.axisNum = axisNum;
     }
 
-    /**
-     * Gets the value of the joystick button.
-     *
-     * @return The value of the joystick button
-     */
     @Override
     public boolean get() {
         return controller.getRawAxis(axisNum) != 0;

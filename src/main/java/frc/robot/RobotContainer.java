@@ -39,11 +39,9 @@ public class RobotContainer {
     //use joystickbutton, whenHeld(), whenPressed(), and whenReleased() methods to add commands
     exampleButton.whenHeld(m_autoCommand);
     
-    //drives
-    AxisTrigger lAxis = new AxisTrigger(controller, Constants.axisLY);
-    AxisTrigger rAxis = new AxisTrigger(controller, Constants.axisRY);
-    //or statement to check if either the lAxis or rAxis is active
-    rAxis.or(lAxis).whenActive(driveCommand);
+    //sets the default command for the drive subsystem to the drive command
+    //while the drive subsystem is not being used by another command the drive command will be active
+    driveChain.setDefaultCommand(driveCommand);
 
     //shooter
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
