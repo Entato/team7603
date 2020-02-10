@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.triggers.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -39,8 +40,8 @@ public class RobotContainer {
     exampleButton.whenHeld(m_autoCommand);
     
     //drives
-    JoystickButton lAxis = new JoystickButton(controller, Constants.axisLY);
-    JoystickButton rAxis = new JoystickButton(controller, Constants.axisRY);
+    AxisTrigger lAxis = new AxisTrigger(controller, Constants.axisLY);
+    AxisTrigger rAxis = new AxisTrigger(controller, Constants.axisRY);
     //or statement to check if either the lAxis or rAxis is active
     rAxis.or(lAxis).whenActive(driveCommand);
 
