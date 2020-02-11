@@ -1,19 +1,16 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-public class Constants {
-    public static final double speedLimit = 0.6;
+public final class Constants {
+    //Speed limits
+    public static final double driveLimit = 0.6;
+    public static final double shooterLimit = 1;
+    public static final double spinnerLimit = 1;
+    public static final double armLimit = 1;
+    public static final double winchLimit = 1;
+    public static final double conveyerLimit = 1;
     
     //Joystick
-    public static final Joystick controller = new Joystick(0);
-
-    //Solenoid
-    public static final DoubleSolenoid solenoid = new DoubleSolenoid(0,1);
+    public static final int joystickPort = 0;
 
     //VictorSP ports
     public static final int lDrive = 0;
@@ -24,7 +21,7 @@ public class Constants {
     public static final int intake = 5;
     public static final int belt = 6;
     public static final int winch = 7;
-    public static final int scissorLift = 8;
+    public static final int arm = 8;
 
     //controller button values
     public static final int buttonA = 1;

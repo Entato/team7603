@@ -11,15 +11,13 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shooter extends SubsystemBase {
-  private final Victor topShooter;
-  private final Victor bottomShooter;
+public class Conveyer extends SubsystemBase {
+  private final Victor conveyer;
   /**
    * Creates a new ExampleSubsystem.
    */
-  public Shooter() {
-    topShooter = new Victor(Constants.shooter1);
-    bottomShooter = new Victor(Constants.shooter2);
+  public Conveyer() {
+    conveyer = new Victor(Constants.belt);
   }
 
   @Override
@@ -27,13 +25,15 @@ public class Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void shoot(){
-    topShooter.set(1);
-    bottomShooter.set(-1);
+  public void shift(){
+    conveyer.set(Constants.conveyerLimit);
+  }
+
+  public void reverse(){
+      conveyer.set(-Constants.conveyerLimit);
   }
 
   public void stop(){
-    topShooter.set(0);
-    bottomShooter.set(0);
+    conveyer.set(0);
   }
 }

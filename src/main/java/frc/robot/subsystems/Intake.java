@@ -11,29 +11,26 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Shooter extends SubsystemBase {
-  private final Victor topShooter;
-  private final Victor bottomShooter;
-  /**
-   * Creates a new ExampleSubsystem.
-   */
-  public Shooter() {
-    topShooter = new Victor(Constants.shooter1);
-    bottomShooter = new Victor(Constants.shooter2);
-  }
+public class Intake extends SubsystemBase {
+    private final Victor intake;
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    /**
+     * Creates a new ExampleSubsystem.
+     */
+    public Intake() {
+        intake = new Victor(Constants.intake);
+    }
 
-  public void shoot(){
-    topShooter.set(1);
-    bottomShooter.set(-1);
-  }
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 
-  public void stop(){
-    topShooter.set(0);
-    bottomShooter.set(0);
-  }
+    public void intake() {
+        intake.set(1);
+    }
+
+    public void stop() {
+        intake.set(0);
+    }
 }
