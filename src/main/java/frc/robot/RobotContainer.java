@@ -18,12 +18,15 @@ public class RobotContainer {
   private final Spinner m_shooter = new Spinner();
   private final DriveChain driveChain = new DriveChain();
   private final Shooter shooter = new Shooter();
+  private final Intake intake = new Intake();
+  private final Conveyer conveyer = new Conveyer();
 
   //Commands
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final SpinnerCommand m_colorSensor = new SpinnerCommand(m_shooter);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
+  private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
 
   //ignore this for now
   public RobotContainer() {
@@ -49,6 +52,10 @@ public class RobotContainer {
     
     JoystickButton aButton = new JoystickButton(controller, 1);
     aButton.whenHeld(m_colorSensor);
+
+    //intake
+    JoystickButton bButton = new JoystickButton(controller, Constants.buttonB);
+    bButton.whenHeld(intakeCommand);
 
   }
 
