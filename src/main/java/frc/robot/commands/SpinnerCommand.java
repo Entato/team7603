@@ -28,6 +28,10 @@ public class SpinnerCommand extends CommandBase {
     //called once and only once when the command is called
     @Override
     public void initialize() {
+        for (int i = 0; i < 4; i++){
+            //Calls method that spins the wheel 1 full revolution
+            spinner.spinOnce();
+        }
     }
 
     //called many times over while the command is active (50hz)
@@ -37,24 +41,16 @@ public class SpinnerCommand extends CommandBase {
         
     }
 
-    //Method that spins the spinner one full rotation
-    public void spinWheel(){
-        //Makes 4 revolutions
-        for (int i = 0; i < 4; i++){
-            //Calls method that spins the wheel 1 full revolution
-            spinner.spinOnce();
-        }
-        //After revolutions are done, stop the motor
-        spinner.stopSpin();
-    }
+   
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        spinner.stopSpin();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }

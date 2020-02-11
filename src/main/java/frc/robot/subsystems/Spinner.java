@@ -85,6 +85,18 @@ public class Spinner extends SubsystemBase {
         }
     }
 
+    //Method used to change to specific color
+    //Currently just changing to next avaialbe color
+    public void changeColor(){
+        
+        String oldColor = checkColor();
+        
+        while(oldColor.equals(checkColor())){
+            spin();
+        }
+        stopSpin();        
+    }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
