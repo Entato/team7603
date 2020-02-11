@@ -57,9 +57,9 @@ public class RobotContainer {
 
     JoystickButton hangingButton = new JoystickButton(controller, Constants.buttonB);
     //Use whenHeld while testing (to be able to change it manually)
-    //hangingButton.whenHeld(hangCommand);
+    hangingButton.whenHeld(hangCommand);
     //Use whenPressed for real competition
-    hangingButton.whenPressed(hangCommand);
+    //hangingButton.whenPressed(hangCommand);
 
   }
 

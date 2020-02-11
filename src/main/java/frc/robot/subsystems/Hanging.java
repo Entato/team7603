@@ -19,11 +19,11 @@ public class Hanging extends SubsystemBase {
     }
 
     public void climb() {
-        climbing.set(1);
+        climbing.set(0.25);
     }
 
     public void retract() {
-        climbing.set(-1);
+        climbing.set(-0.5);
     }
 
     public void stop() {

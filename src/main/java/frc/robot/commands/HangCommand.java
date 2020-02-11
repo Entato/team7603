@@ -45,9 +45,10 @@ public class HangCommand extends CommandBase {
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
         SmartDashboard.putNumber("Current Time: ", currentTime);
-        if (currentTime - startTime >= 3000) {
-            return true;
-        }
+        //Comment following if statement while testing 
+        // if (currentTime - startTime >= 3000) {
+        //     return true;
+        // }
         return false;
     }
 }
