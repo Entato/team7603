@@ -7,6 +7,7 @@ public final class Constants {
     public static final double spinnerLimit = 1;
     public static final double armLimit = 1;
     public static final double winchLimit = 1;
+    public static final double conveyerLimit = 1;
     
     //Joystick
     public static final int joystickPort = 0;

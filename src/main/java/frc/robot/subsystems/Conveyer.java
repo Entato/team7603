@@ -11,26 +11,29 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Intake extends SubsystemBase {
-    private final Victor intake;
+public class Conveyer extends SubsystemBase {
+  private final Victor conveyer;
+  /**
+   * Creates a new ExampleSubsystem.
+   */
+  public Conveyer() {
+    conveyer = new Victor(Constants.belt);
+  }
 
-    /**
-     * Creates a new ExampleSubsystem.
-     */
-    public Intake() {
-        intake = new Victor(Constants.intake);
-    }
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
 
-    @Override
-    public void periodic() {
-        // This method will be called once per scheduler run
-    }
+  public void shift(){
+    conveyer.set(Constants.conveyerLimit);
+  }
 
-    public void intake() {
-        intake.set(1);
-    }
+  public void reverse(){
+      conveyer.set(-Constants.conveyerLimit);
+  }
 
-    public void stop() {
-        intake.set(0);
-    }
+  public void stop(){
+    conveyer.set(0);
+  }
 }

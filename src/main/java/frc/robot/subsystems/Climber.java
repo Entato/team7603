@@ -12,39 +12,40 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Climber extends SubsystemBase {
-  private final Victor winch;
-  private final Victor arm;
-  /**
-   * Creates a new ExampleSubsystem.
-   */
-  public Climber() {
-    winch = new Victor(Constants.winch);
-    arm = new Victor(Constants.arm);
-  }
+    private final Victor winch;
+    private final Victor arm;
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    /**
+     * Creates a new ExampleSubsystem.
+     */
+    public Climber() {
+        winch = new Victor(Constants.winch);
+        arm = new Victor(Constants.arm);
+    }
 
-  public void extend(){
-    arm.set(Constants.armLimit);
-  }
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 
-  public void retract(){
-    arm.set(-Constants.armLimit);
-  }
+    public void extend() {
+        arm.set(Constants.armLimit);
+    }
 
-  public void pull(){
-      winch.set(Constants.winchLimit);
-  }
+    public void retract() {
+        arm.set(-Constants.armLimit);
+    }
 
-  public void release(){
-      winch.set(-Constants.winchLimit);
-  }
+    public void pull() {
+        winch.set(Constants.winchLimit);
+    }
 
-  public void stop(){
-    arm.set(0);
-    winch.set(0);
-  }
+    public void release() {
+        winch.set(-Constants.winchLimit);
+    }
+
+    public void stop() {
+        arm.set(0);
+        winch.set(0);
+    }
 }
