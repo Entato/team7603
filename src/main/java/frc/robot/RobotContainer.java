@@ -13,7 +13,6 @@ public class RobotContainer {
   private final Joystick controller = new Joystick(Constants.joystickPort);
 
   //Subsystems
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Spinner m_shooter = new Spinner();
   private final DriveChain driveChain = new DriveChain();
   private final Shooter shooter = new Shooter();
@@ -21,7 +20,6 @@ public class RobotContainer {
   private final Conveyer conveyer = new Conveyer();
 
   //Commands
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final SpinnerCommand m_colorSensor = new SpinnerCommand(m_shooter);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
@@ -34,18 +32,13 @@ public class RobotContainer {
 
   //method for mapping buttons to call commands
   private void configureButtonBindings() {
-
-    //example button and command
-    //create joystickbutton object with parameters of the joystick and the button ID
-    JoystickButton exampleButton = new JoystickButton(controller, 1);
-    //use joystickbutton, whenHeld(), whenPressed(), and whenReleased() methods to add commands
-    exampleButton.whenHeld(m_autoCommand);
     
     //sets the default command for the drive subsystem to the drive command
     //while the drive subsystem is not being used by another command the drive command will be active
     driveChain.setDefaultCommand(driveCommand);
 
     //shooter
+    //create joystickbutton object with parameters of the joystick and the button ID
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
     
@@ -60,6 +53,6 @@ public class RobotContainer {
 
   //used for calling the autonomous command
   public Command getAutonomousCommand() {
-    return m_autoCommand;
+    return driveCommand;
   }
 }
