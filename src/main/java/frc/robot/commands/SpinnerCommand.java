@@ -8,9 +8,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Spinner;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 
 /**
  * An example command that uses an example subsystem.
