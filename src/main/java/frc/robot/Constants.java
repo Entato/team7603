@@ -5,6 +5,8 @@ public final class Constants {
     public static final double driveLimit = 0.6;
     public static final double shooterLimit = 1;
     public static final double spinnerLimit = 1;
+    public static final double armLimit = 1;
+    public static final double winchLimit = 1;
     
     //Joystick
     public static final int joystickPort = 0;
@@ -18,7 +20,7 @@ public final class Constants {
     public static final int intake = 5;
     public static final int belt = 6;
     public static final int winch = 7;
-    public static final int scissorLift = 8;
+    public static final int arm = 8;
 
     //controller button values
     public static final int buttonA = 1;
