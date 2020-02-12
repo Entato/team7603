@@ -25,17 +25,12 @@ public class ColorSpinnerCommand extends CommandBase {
         spinner = m_shooter;
     }
 
-    // //Setter for target color
-    // public void setTargetColor(String targetColor){
-    //     this.targetColor = targetColor;
-    // }
-
     //called once and only once when the command is called
     @Override
     public void initialize() {
         //Set color sent by FRC
-        //Blue is a placeholder value
-        targetColor = "Blue";
+        //Red is a placeholder value
+        targetColor = "Red";
         //After button is pressed, move to shifted color sent to use by FRC
         //Returns a boolean value that indicates whether the spinner has been spun to the correct colour
         endCommand = spinner.goToColor(targetColor);

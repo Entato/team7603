@@ -53,11 +53,6 @@ public class RobotContainer {
     JoystickButton aButton = new JoystickButton(controller, 1);
     aButton.whenHeld(m_colorSensor);
 
-    //Color FRC will give us
-    String frc_Color = "Red";
-    //Sets target color of command
-    m_colorSpinner.setTargetColor(frc_Color);
-
     JoystickButton bButton = new JoystickButton(controller, 2);
     bButton.whenHeld(m_colorSpinner);
 
