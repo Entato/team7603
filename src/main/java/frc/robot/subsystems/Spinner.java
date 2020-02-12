@@ -33,10 +33,10 @@ public class Spinner extends SubsystemBase {
     public void stopSpin(){
         spinner.set(0);
     }
-    //Setter for target color
-    public void setTargetColor(String targetColor){
-        this.targetColor = targetColor;
-    }
+    // //Setter for target color
+    // public void setTargetColor(String targetColor){
+    //     this.targetColor = targetColor;
+    // }
     public String checkColor(){
         Color detectedColor = m_colorSensor.getColor();
         double IR = m_colorSensor.getIR();
