@@ -8,10 +8,12 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.I2C;
 import com.revrobotics.ColorSensorV3;
 
@@ -19,6 +21,7 @@ public class Spinner extends SubsystemBase {
     private final I2C.Port i2cPort = I2C.Port.kOnboard;
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
+    private final DoubleSolenoid solenoid = new DoubleSolenoid(0,1);
 
     /**
      * Creates a new ExampleSubsystem.
@@ -38,6 +41,12 @@ public class Spinner extends SubsystemBase {
     public void stopSpin(){
         spinner.set(0);
     }
+    public void liftSpinnerArm() {
+        solenoid.set(Value.kForward);
+    }
+    public void dropSpinnerArm() {
+        solenoid.set(Value.kReverse);
+    }
     public void sensor() {
         spin();
         Color detectedColor = m_colorSensor.getColor();
@@ -46,9 +55,9 @@ public class Spinner extends SubsystemBase {
         double green = (detectedColor.green * 2);
         double blue = (detectedColor.blue * 4);
         double speed = 0.5;
-        SmartDashboard.putNumber("Red", detectedColor.red * 3);
-        SmartDashboard.putNumber("Green", detectedColor.green * 2);
-        SmartDashboard.putNumber("Blue", detectedColor.blue * 4);
+        SmartDashboard.putNumber("Red", detectedColor.red);
+        SmartDashboard.putNumber("Green", detectedColor.green);
+        SmartDashboard.putNumber("Blue", detectedColor.blue);
         if (red > 1.14 && red < 1.29 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4) {
             color = "Yellow";
             if (nullChecker == true && tempColor != color) {
@@ -56,19 +65,19 @@ public class Spinner extends SubsystemBase {
                 tempColor = color;
             }
 
-        } else if (red > green && red > blue) {
+        } else if (red > 1.14 && red < 1.29 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4) {
             color = "Red";
             if (nullChecker == true && tempColor != color) {
                 switches++;
                 tempColor = color;
             }
-        } else if (green > red && green > blue) {
+        } else if (red > 1.14 && red < 1.29 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4) {
             color = "Green";
             if (nullChecker == true && tempColor != color) {
                 switches++;
                 tempColor = color;
             }
-        } else if (blue > red && blue > green) {
+        } else if (red > 1.14 && red < 1.29 && blue > 0.27 && blue < 0.47 && green > 0.92 && green < 1.4) {
             color = "Blue";
             if (nullChecker == true && tempColor != color) {
                 switches++;
