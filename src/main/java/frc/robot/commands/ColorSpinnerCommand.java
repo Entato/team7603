@@ -19,21 +19,27 @@ public class ColorSpinnerCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
     String targetColor;
+    Boolean endCommand = false;
     //commands must take in a parameter of the subsystems they are using so they can access their methods
     public ColorSpinnerCommand(Spinner m_shooter) {
         spinner = m_shooter;
     }
 
-    //Setter for target color
-    public void setTargetColor(String targetColor){
-        this.targetColor = targetColor;
-    }
+    // //Setter for target color
+    // public void setTargetColor(String targetColor){
+    //     this.targetColor = targetColor;
+    // }
 
     //called once and only once when the command is called
     @Override
     public void initialize() {
-        //After button is pressed, move to shifted color sent to use by FRC 
-        goToColor(targetColor);
+        //Set color sent by FRC
+        //Blue is a placeholder value
+        targetColor = "Blue";
+        //After button is pressed, move to shifted color sent to use by FRC
+        //Returns a boolean value that indicates whether the spinner has been spun to the correct colour
+        endCommand = spinner.goToColor(targetColor);
+
     }
 
     //called many times over while the command is active (50hz)
@@ -41,16 +47,7 @@ public class ColorSpinnerCommand extends CommandBase {
     public void execute() {
     }
 
-    //Method that spins to the selected Color
-    public boolean goToColor(String color){
-        String currentColor = spinner.checkColor();
-        if (currentColor != color){
-            spinner.spin();
-            return goToColor(color);
-        }
-        spinner.stopSpin();
-        return true;
-    }
+ 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
@@ -59,6 +56,6 @@ public class ColorSpinnerCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return endCommand;
     }
 }

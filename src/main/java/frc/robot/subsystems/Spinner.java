@@ -85,16 +85,15 @@ public class Spinner extends SubsystemBase {
         }
     }
 
-    //Method used to change to specific color
-    //Currently just changing to next avaialbe color
-    public void changeColor(){
-        
-        String oldColor = checkColor();
-        
-        while(oldColor.equals(checkColor())){
+       //Method that spins to the selected Color
+       public boolean goToColor(String color){
+        String currentColor =checkColor();
+        if (currentColor != color){
             spin();
+            return goToColor(color);
         }
-        stopSpin();        
+        stopSpin();
+        return true;
     }
 
     @Override
