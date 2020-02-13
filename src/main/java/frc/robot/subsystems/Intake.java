@@ -27,7 +27,7 @@ public class Intake extends SubsystemBase {
     }
 
     public void intake() {
-        intake.set(1);
+        intake.set(-1);
     }
 
     public void stop() {

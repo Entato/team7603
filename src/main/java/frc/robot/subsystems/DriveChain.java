@@ -27,7 +27,7 @@ public class DriveChain extends SubsystemBase {
 
   //sets the right drive of the robot
   public void driveRight(double speed){
-    RDrive.set(speed * Constants.driveLimit);
+    RDrive.set(speed * Constants.driveLimit*-1);
   }
 
   public void stop(){

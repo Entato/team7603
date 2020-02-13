@@ -2,7 +2,7 @@ package frc.robot;
 
 public final class Constants {
     //Speed limits
-    public static final double driveLimit = 0.6;
+    public static final double driveLimit = 1;
     public static final double shooterLimit = 1;
     public static final double spinnerLimit = 1;
     public static final double armLimit = 1;
@@ -18,7 +18,7 @@ public final class Constants {
     public static final int shooter1 = 2;
     public static final int shooter2 = 3;
     public static final int spinner = 4;
-    public static final int intake = 5;
+    public static final int intake = 9;
     public static final int belt = 6;
     public static final int winch = 7;
     public static final int arm = 8;
