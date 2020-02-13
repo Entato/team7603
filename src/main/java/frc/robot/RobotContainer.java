@@ -13,17 +13,18 @@ public class RobotContainer {
   private final Joystick controller = new Joystick(Constants.joystickPort);
 
   //Subsystems
-  private final Spinner m_shooter = new Spinner();
+  private final Spinner spin = new Spinner();
   private final DriveChain driveChain = new DriveChain();
   private final Shooter shooter = new Shooter();
   private final Intake intake = new Intake();
   private final Conveyer conveyer = new Conveyer();
 
   //Commands
-  private final SpinnerCommand m_colorSensor = new SpinnerCommand(m_shooter);
+  private final SpinnerCommand spinCommand = new SpinnerCommand(spin, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
+  private final LiftSpinnerCommand liftspinnerCommand = new LiftSpinnerCommand(spin);
 
   //ignore this for now
   public RobotContainer() {
@@ -42,14 +43,18 @@ public class RobotContainer {
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
     
-    JoystickButton aButton = new JoystickButton(controller, 1);
-    aButton.whenHeld(m_colorSensor);
+    JoystickButton buttonSTART = new JoystickButton(controller, Constants.buttonSTART);
+    buttonSTART.whenHeld(spinCommand);
 
+    JoystickButton buttonBACK = new JoystickButton(controller, Constants.buttonBACK);
+    buttonBACK.whenHeld(spinCommand)
     //intake
-    JoystickButton bButton = new JoystickButton(controller, Constants.buttonB);
-    bButton.whenHeld(intakeCommand);
+    JoystickButton rbButton = new JoystickButton(controller, Constants.buttonRB);
+    rbButton.whenHeld(intakeCommand);
 
-  }
+    edu.wpi.first.wpilibj.buttons.JoystickButton ybutton = new JoystickButton(controller, Constants.buttonY);
+    ybutton.whenPressed(liftspinnerCommand);
+  } 
 
   //used for calling the autonomous command
   public Command getAutonomousCommand() {

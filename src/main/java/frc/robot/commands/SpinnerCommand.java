@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Spinner;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
@@ -16,8 +17,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class SpinnerCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
-    public SpinnerCommand(Spinner m_shooter) {
-        spinner = m_shooter;
+    Joystick Controller;
+    public SpinnerCommand(Spinner spin, Joystick Controller) {
+        spinner = spin;
+        this.Controller = Controller;
     }
 
     /**
@@ -30,18 +33,23 @@ public class SpinnerCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        if (Controller.getRawButton(Constants.buttonBACK)) {
+            spinner.spin();
+        }
+        else if (Controller.getRawButton(Constants.buttonStart)) {
+            spinner.spinL();
+        }
     }
 
     @Override
     public void execute() {
-        spinner.sensor();
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        spinner.nospin();
     }
-
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
