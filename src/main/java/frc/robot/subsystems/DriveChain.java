@@ -20,17 +20,17 @@ public class DriveChain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  //sets the left drive of the robot
-  public void driveLeft(double speed){
+  // sets the left drive of the robot
+  public void driveLeft(double speed) {
     LDrive.set(speed * Constants.driveLimit);
   }
 
-  //sets the right drive of the robot
-  public void driveRight(double speed){
-    RDrive.set(speed * Constants.driveLimit*-1);
+  // sets the right drive of the robot
+  public void driveRight(double speed) {
+    RDrive.set(speed * Constants.driveLimit * -1);
   }
 
-  public void stop(){
+  public void stop() {
     LDrive.set(0);
     RDrive.set(0);
   }

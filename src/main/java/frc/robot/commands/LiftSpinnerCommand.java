@@ -14,9 +14,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class LiftSpinnerCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Spinner lift;
-    boolean on = false;
+  boolean on = false;
+
   /**
    * Creates a new ExampleCommand.
    *
@@ -31,12 +32,11 @@ public class LiftSpinnerCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-      if (on){
-          lift.uplift();
-      } 
-      else if (!on){
-          lift.downlift();
-      }
+    if (on) {
+      lift.uplift();
+    } else if (!on) {
+      lift.downlift();
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.

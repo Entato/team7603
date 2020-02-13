@@ -19,28 +19,33 @@ public class Spinner extends SubsystemBase {
     /**
      * Creates a new ExampleSubsystem.
      */
-    
+
     public Spinner() {
     }
+
     public void uplift() {
         lift.set(DoubleSolenoid.Value.kForward);
     }
+
     public void downlift() {
         lift.set(DoubleSolenoid.Value.kReverse);
     }
+
     public void spin() {
         spinner.set(Constants.spinnerLimit);
     }
+
     public void spinL() {
         spinner.set(-Constants.spinnerLimit);
     }
-    public void nospin(){
+
+    public void nospin() {
         spinner.set(0);
     }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
     }
-
 
 }

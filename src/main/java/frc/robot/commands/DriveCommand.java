@@ -11,32 +11,33 @@ public class DriveCommand extends CommandBase {
   private final DriveChain driveChain;
   private final Joystick controller;
 
-  //commands must take in a parameter of the subsystems they are using so they can access their methods
+  // commands must take in a parameter of the subsystems they are using so they
+  // can access their methods
   public DriveCommand(DriveChain subsystem, Joystick controller) {
     driveChain = subsystem;
     this.controller = controller;
     addRequirements(subsystem);
   }
 
-  //called once and only once when the command is called
+  // called once and only once when the command is called
   @Override
   public void initialize() {
   }
 
-  //called many times over while the command is active (50hz)
+  // called many times over while the command is active (50hz)
   @Override
   public void execute() {
     driveChain.driveLeft(controller.getRawAxis(Constants.axisLY));
     driveChain.driveRight(controller.getRawAxis(Constants.axisRY));
   }
 
-  //called once the command ends
+  // called once the command ends
   @Override
   public void end(boolean interrupted) {
     driveChain.stop();
   }
 
-  //logic to check if the command is finished
+  // logic to check if the command is finished
   @Override
   public boolean isFinished() {
     return false;

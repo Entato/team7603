@@ -14,6 +14,7 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
   private final Victor topShooter;
   private final Victor bottomShooter;
+
   /**
    * Creates a new ExampleSubsystem.
    */
@@ -27,12 +28,12 @@ public class Shooter extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void shoot(){
+  public void shoot() {
     topShooter.set(1);
     bottomShooter.set(-1);
   }
 
-  public void stop(){
+  public void stop() {
     topShooter.set(0);
     bottomShooter.set(0);
   }

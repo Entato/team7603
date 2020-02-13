@@ -19,6 +19,7 @@ public class SpinnerCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
     Joystick Controller;
+
     public SpinnerCommand(Spinner spin, Joystick Controller) {
         spinner = spin;
         this.Controller = Controller;
@@ -29,15 +30,13 @@ public class SpinnerCommand extends CommandBase {
      *
      * @param subsystem The subsystem used by this command.
      */
- 
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
         if (Controller.getRawButton(Constants.buttonBACK)) {
             spinner.spin();
-        }
-        else if (Controller.getRawButton(Constants.buttonSTART)) {
+        } else if (Controller.getRawButton(Constants.buttonSTART)) {
             spinner.spinL();
         }
     }
@@ -51,6 +50,7 @@ public class SpinnerCommand extends CommandBase {
     public void end(boolean interrupted) {
         spinner.nospin();
     }
+
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
