@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ClimbCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Climber arm;
-
   /**
    * Creates a new ExampleCommand.
    *
@@ -27,11 +26,11 @@ public class ClimbCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(arm);
   }
-
+  
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    arm.extend();
+    arm.pull();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

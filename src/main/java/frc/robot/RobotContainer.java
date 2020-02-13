@@ -18,6 +18,7 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final Intake intake = new Intake();
   private final Conveyer conveyer = new Conveyer();
+  private final Climber lift = new Climber();
 
   // Commands
   private final SpinnerCommand spinCommand = new SpinnerCommand(spin, controller);
@@ -25,6 +26,8 @@ public class RobotContainer {
   private final ShootCommand shootCommand = new ShootCommand(shooter);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
   private final LiftSpinnerCommand liftspinnerCommand = new LiftSpinnerCommand(spin);
+  private final LiftCommand liftCommand = new LiftCommand(lift);
+  private final ClimbCommand climbCommand = new ClimbCommand(lift);
 
   // ignore this for now
   public RobotContainer() {
@@ -56,6 +59,12 @@ public class RobotContainer {
 
     JoystickButton ybutton = new JoystickButton(controller, Constants.buttonY);
     ybutton.whenPressed(liftspinnerCommand);
+
+    JoystickButton xbutton = new JoystickButton(controller, Constants.buttonX);
+    xbutton.whenHeld(liftCommand);
+
+    JoystickButton lbbutton = new JoystickButton(controller, Constants.buttonLB);
+    lbbutton.whenHeld(climbCommand);
   }
 
   // used for calling the autonomous command

@@ -47,6 +47,7 @@ public class LiftSpinnerCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    on = !on;
   }
 
   // Returns true when the command should end.
