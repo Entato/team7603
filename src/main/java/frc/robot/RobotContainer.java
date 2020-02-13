@@ -47,12 +47,12 @@ public class RobotContainer {
     buttonSTART.whenHeld(spinCommand);
 
     JoystickButton buttonBACK = new JoystickButton(controller, Constants.buttonBACK);
-    buttonBACK.whenHeld(spinCommand)
+    buttonBACK.whenHeld(spinCommand);
     //intake
     JoystickButton rbButton = new JoystickButton(controller, Constants.buttonRB);
     rbButton.whenHeld(intakeCommand);
 
-    edu.wpi.first.wpilibj.buttons.JoystickButton ybutton = new JoystickButton(controller, Constants.buttonY);
+    JoystickButton ybutton = new JoystickButton(controller, Constants.buttonY);
     ybutton.whenPressed(liftspinnerCommand);
   } 
 

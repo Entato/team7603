@@ -10,15 +10,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.I2C;
-import com.revrobotics.ColorSensorV3;
 
 public class Spinner extends SubsystemBase {
-    private final I2C.Port i2cPort = I2C.Port.kOnboard;
-    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
     private final DoubleSolenoid lift = new DoubleSolenoid(0, 1);
 

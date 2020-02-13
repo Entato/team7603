@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Spinner;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
