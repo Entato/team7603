@@ -31,6 +31,7 @@ public class ClimbCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    //Arm extends (to reach the hanging obstacle)
     arm.extend();
   }
 
@@ -42,6 +43,7 @@ public class ClimbCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    //Sets the arm motor (winch motor already set to 0)
     arm.stop();
   }
 

@@ -7,7 +7,7 @@ public final class Constants {
     public static final double spinnerLimit = 1;
     public static final double armLimit = 1;
     public static final double winchLimit = 1;
-    public static final double conveyerLimit = 1;
+    public static final double conveyerLimit = 0.5;
     
     //Joystick
     public static final int joystickPort = 0;
@@ -42,4 +42,7 @@ public final class Constants {
     public static final int RTrigger = 3;
     public static final int axisRX = 4;
     public static final int axisRY = 5;
+
+    //sensor values
+    public static final int kUltrasonicPort = 0;
 }

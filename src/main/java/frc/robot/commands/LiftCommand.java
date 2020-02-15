@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class LiftCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Climber arm;
-
   /**
    * Creates a new ExampleCommand.
    *
@@ -31,7 +30,10 @@ public class LiftCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    //As the arm starts to retract, the winch starts pulling the robot up
     arm.retract();
+    //Method for the winch
+    arm.release();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -42,6 +44,7 @@ public class LiftCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    //Stops the winch motors (arm motor is already set to 0)
     arm.stop();
   }
 

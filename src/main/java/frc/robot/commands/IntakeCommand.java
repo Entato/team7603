@@ -18,6 +18,9 @@ public class IntakeCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Intake intake;
   private final Conveyer conveyer;
+  private boolean intaking = false;
+  private long startTime = 0;
+  private long currentTime = 0;
 
   /**
    * Creates a new ExampleCommand.
@@ -35,13 +38,25 @@ public class IntakeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    intake.intake();
-    conveyer.shift();
+    //Intake motor is always on
+    intake.intake();    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if(intake.checkBall() && intaking == false) {
+      intaking = true;
+      //Initializes start time for the conveyer once a ball goes through
+      startTime = System.currentTimeMillis();
+    }
+    if(intaking){
+      currentTime = System.currentTimeMillis();
+      conveyer.shift();
+      if(currentTime - startTime == 1000) {
+        intaking = false;
+      }
+    }
   }
 
   // Called once the command ends or is interrupted.
