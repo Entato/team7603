@@ -26,6 +26,7 @@ public class DriveCommand extends CommandBase {
   //called many times over while the command is active (50hz)
   @Override
   public void execute() {
+    //Takes input from the controller to control speed of robot
     driveChain.driveLeft(controller.getRawAxis(Constants.axisLY));
     driveChain.driveRight(controller.getRawAxis(Constants.axisRY));
   }
@@ -33,6 +34,7 @@ public class DriveCommand extends CommandBase {
   //called once the command ends
   @Override
   public void end(boolean interrupted) {
+    //Stops the drive motors
     driveChain.stop();
   }
 

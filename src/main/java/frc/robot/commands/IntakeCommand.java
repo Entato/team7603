@@ -55,6 +55,7 @@ public class IntakeCommand extends CommandBase {
       conveyer.shift();
       if(currentTime - startTime == 1000) {
         intaking = false;
+        conveyer.stop();
       }
     }
   }
