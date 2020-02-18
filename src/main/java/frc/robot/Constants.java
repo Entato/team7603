@@ -45,4 +45,12 @@ public final class Constants {
 
     //sensor values
     public static final int kUltrasonicPort = 0;
+
+    //Hard code values
+    public static final int spin1Rev = 69;
+    public static final int spin1Color = 420;
+    public static final int climbTime = 42069;
+    public static final int winchTime = 6969;
+
+
 }
