@@ -16,6 +16,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class LiftCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Climber arm;
+
+private long startTime = 0;
+private long currentTime = 0;
+
   /**
    * Creates a new ExampleCommand.
    *
