@@ -21,8 +21,8 @@ public class SpinnerCommand extends CommandBase {
     Spinner spinner;
 
     //commands must take in a parameter of the subsystems they are using so they can access their methods
-    public SpinnerCommand(Spinner m_shooter) {
-        spinner = m_shooter;
+    public SpinnerCommand(Spinner spinner) {
+        this.spinner = spinner;
     }
 
     //called once and only once when the command is called
