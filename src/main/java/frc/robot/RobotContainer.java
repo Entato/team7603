@@ -21,7 +21,7 @@ public class RobotContainer {
   private final Climber climber = new Climber();
 
   //Commands
-  private final SpinnerCommand colorSensorCommand = new SpinnerCommand(spinner);
+  private final SpinRevolutionCommand spin1RevCommand = new SpinRevolutionCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
@@ -48,7 +48,7 @@ public class RobotContainer {
     
     //sensor
     JoystickButton colorSensorButton = new JoystickButton(controller, Constants.buttonX);
-    colorSensorButton.whenHeld(colorSensorCommand);
+    colorSensorButton.whenHeld(spin1RevCommand);
 
     //intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonB);

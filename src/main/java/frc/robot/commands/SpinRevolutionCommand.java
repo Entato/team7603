@@ -8,43 +8,49 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Spinner;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class SpinnerCommand extends CommandBase {
+public class SpinRevolutionCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
-    public SpinnerCommand(Spinner m_shooter) {
-        spinner = m_shooter;
+
+    //commands must take in a parameter of the subsystems they are using so they can access their methods
+    public SpinnerCommand(Spinner spinner) {
+        this.spinner = spinner;
     }
 
-    /**
-     * Creates a new ExampleCommand.
-     *
-     * @param subsystem The subsystem used by this command.
-     */
- 
-
-    // Called when the command is initially scheduled.
+    //called once and only once when the command is called
     @Override
     public void initialize() {
+        for (int i = 0; i < 4; i++){
+            //Calls method that spins the wheel 1 full revolution
+            spinner.spinOnce();
+        }
     }
 
+    //called many times over while the command is active (50hz)
     @Override
     public void execute() {
-        spinner.sensor();
+        //spinner.sensor();
+        
     }
 
+   
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        spinner.stopSpin();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }
