@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends SubsystemBase {
     private final Victor intake;
@@ -40,6 +42,7 @@ public class Intake extends SubsystemBase {
     }
 
     public boolean checkBall() {
+        SmartDashboard.putNumber("Value of Sensor", m_ultrasonic.getValue());
         if (m_ultrasonic.getValue() > 0) {
             return true;
         }
