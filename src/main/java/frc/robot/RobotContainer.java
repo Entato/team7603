@@ -65,7 +65,7 @@ public class RobotContainer {
     climbButton.whenHeld(climbCommand);
 
     // lift
-    JoystickButton liftButton = new JoystickButton(Controller, Constants.buttonRB);
+    JoystickButton liftButton = new JoystickButton(controller, Constants.buttonRB);
     liftButton.whenHeld(liftCommand);
   }
 

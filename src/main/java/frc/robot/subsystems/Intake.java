@@ -43,7 +43,7 @@ public class Intake extends SubsystemBase {
 
     public boolean checkBall() {
         SmartDashboard.putNumber("Value of Sensor", m_ultrasonic.getValue());
-        if (m_ultrasonic.getValue() > 0) {
+        if (m_ultrasonic.getValue() > Constants.ultraSonicIn) {
             return true;
         }
         return false;

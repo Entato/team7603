@@ -45,4 +45,6 @@ public final class Constants {
 
     // sensor values
     public static final int kUltrasonicPort = 0;
+    public static final double ultraSonicNone = 0;
+    public static final double ultraSonicIn = 0;
 }
