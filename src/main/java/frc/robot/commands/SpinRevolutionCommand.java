@@ -21,7 +21,7 @@ public class SpinRevolutionCommand extends CommandBase {
     Spinner spinner;
 
     //commands must take in a parameter of the subsystems they are using so they can access their methods
-    public SpinnerCommand(Spinner spinner) {
+    public SpinRevolutionCommand(Spinner spinner) {
         this.spinner = spinner;
     }
 

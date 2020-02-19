@@ -22,6 +22,7 @@ public class RobotContainer {
 
   //Commands
   private final SpinRevolutionCommand spin1RevCommand = new SpinRevolutionCommand(spinner);
+  private final SpecificColorCommand goToColorCommand = new SpecificColorCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
@@ -46,20 +47,24 @@ public class RobotContainer {
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
     
-    //sensor
-    JoystickButton colorSensorButton = new JoystickButton(controller, Constants.buttonX);
-    colorSensorButton.whenHeld(spin1RevCommand);
+    //spin one revolution
+    JoystickButton spinButton = new JoystickButton(controller, Constants.buttonB);
+    spinButton.whenHeld(spin1RevCommand);
+
+    //go to specific color
+    JoystickButton goToColorButton = new JoystickButton(controller, Constants.buttonX);
+    goToColorButton.whenHeld(goToColorCommand);
 
     //intake
-    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonB);
+    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonY);
     intakeButton.whenHeld(intakeCommand);
 
     //climber
-    JoystickButton climbButton = new JoystickButton(controller, Constants.buttonY);
+    JoystickButton climbButton = new JoystickButton(controller, Constants.buttonLB);
     climbButton.whenHeld(climbCommand);
 
     //lift
-    JoystickButton liftButton = new JoystickButton(Controller, Constants.buttonLB);
+    JoystickButton liftButton = new JoystickButton(Controller, Constants.buttonRB);
     liftButton.whenHeld(liftCommand);
   }
 
