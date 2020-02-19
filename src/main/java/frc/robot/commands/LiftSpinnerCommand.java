@@ -33,9 +33,9 @@ public class LiftSpinnerCommand extends CommandBase {
   @Override
   public void initialize() {
     if (on) {
-      lift.uplift();
+      lift.upLift();
     } else if (!on) {
-      lift.downlift();
+      lift.downLift();
     }
   }
 

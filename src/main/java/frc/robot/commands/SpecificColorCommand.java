@@ -60,8 +60,6 @@ public class SpecificColorCommand extends CommandBase {
     // Returns a boolean value that indicates whether the spinner has been spun to
     // the correct colour
 
-    }
-
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
