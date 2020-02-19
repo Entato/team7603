@@ -39,7 +39,6 @@ public class Intake extends SubsystemBase {
         intake.set(0);
     }
 
-    public 
     public boolean checkBall() {
         if (m_ultrasonic.getValue() > 0) {
             return true;
