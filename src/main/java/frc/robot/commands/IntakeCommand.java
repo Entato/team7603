@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class IntakeCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake intake;
   private final Conveyer conveyer;
   private boolean intaking = false;
@@ -38,22 +38,22 @@ public class IntakeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //Intake motor is always on
-    intake.intake();    
+    // Intake motor is always on
+    intake.intake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(intake.checkBall() && intaking == false) {
+    if (intake.checkBall() && intaking == false) {
       intaking = true;
-      //Initializes start time for the conveyer once a ball goes through
+      // Initializes start time for the conveyer once a ball goes through
       startTime = System.currentTimeMillis();
     }
-    if(intaking){
+    if (intaking) {
       currentTime = System.currentTimeMillis();
       conveyer.shift();
-      if(currentTime - startTime == 1000) {
+      if (currentTime - startTime == 1000) {
         intaking = false;
         conveyer.stop();
       }

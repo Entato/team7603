@@ -37,16 +37,16 @@ public class SpecificColorCommand extends CommandBase {
         if (targetColor.length() > 0) {
             switch (targetColor.charAt(0)) {
             case 'B':
-            endCommand=spinner.goToColor("Blue");
+                endCommand = spinner.goToColor("Blue");
                 break;
             case 'G':
-            endCommand=spinner.goToColor("Green");
+                endCommand = spinner.goToColor("Green");
                 break;
             case 'R':
-            endCommand=spinner.goToColor("Red");
+                endCommand = spinner.goToColor("Red");
                 break;
             case 'Y':
-            endCommand=spinner.goToColor("Yelow");
+                endCommand = spinner.goToColor("Yelow");
                 break;
             default:
                 // This is corrupt data

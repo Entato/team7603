@@ -20,28 +20,28 @@ public class SpinRevolutionCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
 
-    //commands must take in a parameter of the subsystems they are using so they can access their methods
+    // commands must take in a parameter of the subsystems they are using so they
+    // can access their methods
     public SpinRevolutionCommand(Spinner spinner) {
         this.spinner = spinner;
     }
 
-    //called once and only once when the command is called
+    // called once and only once when the command is called
     @Override
     public void initialize() {
-        for (int i = 0; i < 4; i++){
-            //Calls method that spins the wheel 1 full revolution
+        for (int i = 0; i < 4; i++) {
+            // Calls method that spins the wheel 1 full revolution
             spinner.spinOnce();
         }
     }
 
-    //called many times over while the command is active (50hz)
+    // called many times over while the command is active (50hz)
     @Override
     public void execute() {
-        //spinner.sensor();
-        
+        // spinner.sensor();
+
     }
 
-   
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {

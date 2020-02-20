@@ -13,6 +13,7 @@ import frc.robot.Constants;
 
 public class Conveyer extends SubsystemBase {
   private final Victor conveyer;
+
   /**
    * Creates a new ExampleSubsystem.
    */
@@ -25,15 +26,15 @@ public class Conveyer extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void shift(){
+  public void shift() {
     conveyer.set(Constants.conveyerLimit);
   }
 
-  public void reverse(){
-      conveyer.set(-Constants.conveyerLimit);
+  public void reverse() {
+    conveyer.set(-Constants.conveyerLimit);
   }
 
-  public void stop(){
+  public void stop() {
     conveyer.set(0);
   }
 }

@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class ClimbCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Climber arm;
 
   /**
@@ -31,7 +31,7 @@ public class ClimbCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //Arm extends (to reach the hanging obstacle)
+    // Arm extends (to reach the hanging obstacle)
     arm.extend();
   }
 
@@ -43,7 +43,7 @@ public class ClimbCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    //Sets the arm motor (winch motor already set to 0)
+    // Sets the arm motor (winch motor already set to 0)
     arm.stop();
   }
 
