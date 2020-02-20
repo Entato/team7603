@@ -43,9 +43,7 @@ public class Intake extends SubsystemBase {
 
     public boolean checkBall() {
         SmartDashboard.putBoolean("Value of Sensor", limit.get());
-        if (!limit.get()) {
-            return true;
-        }
-        return false;
+        //Currently returns false if sensor is pressed
+        return limit.get();
     }
 }
