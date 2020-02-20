@@ -22,6 +22,7 @@ public final class Constants {
     public static final int belt = 6;
     public static final int winch = 7;
     public static final int arm = 8;
+    public static final int limitSensor = 9;
 
     // controller button values
     public static final int buttonA = 1;
