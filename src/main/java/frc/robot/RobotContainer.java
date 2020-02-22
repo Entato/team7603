@@ -3,6 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import frc.robot.triggers.AxisTrigger;
+import frc.robot.triggers.POVTrigger;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -72,6 +74,13 @@ public class RobotContainer {
     //liftspinner
     JoystickButton liftSpinnerButton = new JoystickButton(controller, Constants.buttonSTART);
     liftSpinnerButton.whenHeld(liftSpinnerCommand);
+
+    //Trigger test cases
+    POVTrigger povtest = new POVTrigger(controller, 90);
+    povtest.whenHeld(liftSpinnerCommand);
+
+    AxisTrigger axistest = new AxisTrigger(controller, Constants.LTrigger);
+    axistest.whenHeld(liftSpinnerCommand);
   }
 
   // used for calling the autonomous command
