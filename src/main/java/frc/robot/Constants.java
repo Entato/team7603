@@ -48,5 +48,35 @@ public final class Constants {
     public static final int limitSensor = 1;
     public static final int kUltrasonicPort = 0;
     public static final double ultraSonicNone = 0;
-    public static final double ultraSonicIn = 0;    
+    public static final double ultraSonicIn = 0;
+
+    // color values
+    public static final double redMinGreen = 0;
+    public static final double redMaxGreen = 0;
+    public static final double blueMinGreen = 0;
+    public static final double blueMaxGreen = 0;
+    public static final double greenMinGreen = 0;
+    public static final double greenMaxGreen = 0;
+
+    public static final double redMinYellow = 0;
+    public static final double redMaxYellow = 0;
+    public static final double blueMinYellow = 0;
+    public static final double blueMaxYellow = 0;
+    public static final double greenMinYellow = 0;
+    public static final double greenMaxYellow = 0;
+
+    public static final double redMinRed = 0;
+    public static final double redMaxRed = 0;
+    public static final double blueMinRed = 0;
+    public static final double blueMaxRed = 0;
+    public static final double greenMinRed = 0;
+    public static final double greenMaxRed = 0;
+
+    public static final double redMinBlue = 0;
+    public static final double redMaxBlue = 0;
+    public static final double blueMinBlue = 0;
+    public static final double blueMaxBlue = 0;
+    public static final double greenMinBlue = 0;
+    public static final double greenMaxBlue = 0;
+    
 }
