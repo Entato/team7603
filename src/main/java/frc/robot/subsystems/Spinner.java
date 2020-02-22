@@ -52,9 +52,9 @@ public class Spinner extends SubsystemBase {
     public String checkColor() {
         Color detectedColor = m_colorSensor.getColor();
         double IR = m_colorSensor.getIR();
-        double red = (detectedColor.red * 3);
-        double green = (detectedColor.green * 2);
-        double blue = (detectedColor.blue * 4);
+        double red = detectedColor.red;
+        double green = detectedColor.green;
+        double blue = detectedColor.blue;
         // Displays Colors
         SmartDashboard.putNumber("Red", red);
         SmartDashboard.putNumber("Green", green);
