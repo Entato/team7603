@@ -19,6 +19,7 @@ public class Climber extends SubsystemBase {
      * Creates a new ExampleSubsystem.
      */
     public Climber() {
+        //Initializes a motor to control the arm and a motor to control the winch
         winch = new Victor(Constants.winch);
         arm = new Victor(Constants.arm);
     }
@@ -29,22 +30,27 @@ public class Climber extends SubsystemBase {
     }
 
     public void extend() {
+        //Turns the motor on to extend the arm
         arm.set(Constants.armLimit);
     }
 
     public void retract() {
+        //Turns the motor in reverse to pull the arm back
         arm.set(-Constants.armLimit);
     }
 
     public void pull() {
+        //Turns the winch on to pull the robot up
         winch.set(Constants.winchLimit);
     }
 
     public void release() {
+        //Turns the winch in reverse to release the winch
         winch.set(-Constants.winchLimit);
     }
 
     public void stop() {
+        //Turns the winch and arm motors off
         arm.set(0);
         winch.set(0);
     }

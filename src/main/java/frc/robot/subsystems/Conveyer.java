@@ -18,6 +18,7 @@ public class Conveyer extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
   public Conveyer() {
+    //Initializes the conveyor motor
     conveyer = new Victor(Constants.belt);
   }
 
@@ -27,14 +28,17 @@ public class Conveyer extends SubsystemBase {
   }
 
   public void shift() {
+    //Turns the conveyer motor on to push the ball forward
     conveyer.set(Constants.conveyerLimit);
   }
 
   public void reverse() {
+    //Turns the conveyer in reverse
     conveyer.set(-Constants.conveyerLimit);
   }
 
   public void stop() {
+    //Turns the conveyer motor off
     conveyer.set(0);
   }
 }

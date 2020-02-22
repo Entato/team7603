@@ -19,6 +19,7 @@ public class Shooter extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
   public Shooter() {
+    //Initializes two motors to shoot
     topShooter = new Victor(Constants.shooter1);
     bottomShooter = new Victor(Constants.shooter2);
   }
@@ -29,11 +30,13 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shoot() {
+    //Turns on the shooter motors
     topShooter.set(1);
     bottomShooter.set(-1);
   }
 
   public void stop() {
+    //Turns off the shooter motors
     topShooter.set(0);
     bottomShooter.set(0);
   }

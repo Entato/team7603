@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.I2C;
 import com.revrobotics.ColorSensorV3;
 
 public class Spinner extends SubsystemBase {
+    //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
     private final I2C.Port i2cPort = I2C.Port.kOnboard;
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
@@ -30,18 +31,22 @@ public class Spinner extends SubsystemBase {
     }
 
     public void spin() {
+        //Turns the spinner motor on to spin the control panel
         spinner.set(1);
     }
 
     public void stopSpin() {
+        //Turns the spinner motor off
         spinner.set(0);
     }
 
     public void upLift() {
+        //Lifts up the spinner/color sensor
         solenoid.set(DoubleSolenoid.Value.kForward);
     }
 
     public void downLift() {
+        //Brings the spinner/color sensor down
         solenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
@@ -50,6 +55,7 @@ public class Spinner extends SubsystemBase {
     // this.targetColor = targetColor;
     // }
     public String checkColor() {
+        //Uses the color sensor to return a color
         Color detectedColor = m_colorSensor.getColor();
         double IR = m_colorSensor.getIR();
         double red = detectedColor.red;

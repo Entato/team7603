@@ -25,6 +25,7 @@ public class Intake extends SubsystemBase {
      * Creates a new ExampleSubsystem.
      */
     public Intake() {
+        //Initializes the intake motor
         intake = new Victor(Constants.intake);
     }
 
@@ -34,14 +35,17 @@ public class Intake extends SubsystemBase {
     }
 
     public void intake() {
+        //Turns the motor on to intake the ball
         intake.set(1);
     }
 
     public void stop() {
+        //Turns the motor off
         intake.set(0);
     }
 
     public boolean checkBall() {
+        //Checks if a ball triggers the sensor and returns a boolean value
         SmartDashboard.putBoolean("Value of Sensor", limit.get());
         //Currently returns false if sensor is pressed
         return limit.get();
