@@ -74,13 +74,6 @@ public class RobotContainer {
     //liftspinner
     JoystickButton liftSpinnerButton = new JoystickButton(controller, Constants.buttonSTART);
     liftSpinnerButton.whenHeld(liftSpinnerCommand);
-
-    //Trigger test cases
-    POVTrigger povtest = new POVTrigger(controller, 90);
-    povtest.whenHeld(liftSpinnerCommand);
-
-    AxisTrigger axistest = new AxisTrigger(controller, Constants.LTrigger);
-    axistest.whenHeld(liftSpinnerCommand);
   }
 
   // used for calling the autonomous command

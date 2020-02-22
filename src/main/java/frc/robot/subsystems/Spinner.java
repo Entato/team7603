@@ -25,7 +25,7 @@ public class Spinner extends SubsystemBase {
     private final I2C.Port i2cPort = I2C.Port.kOnboard;
     private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
-    private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 1);
+    private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
 
     public Spinner() {
     }
@@ -65,20 +65,24 @@ public class Spinner extends SubsystemBase {
         SmartDashboard.putNumber("Red", red);
         SmartDashboard.putNumber("Green", green);
         SmartDashboard.putNumber("Blue", blue);
+
         // Checks for Yellow
         if (red > Constants.redMinYellow && red < Constants.redMaxYellow && blue > Constants.blueMinYellow && blue < Constants.blueMaxYellow && green > Constants.greenMinYellow && green < Constants.greenMaxYellow) {
+            SmartDashboard.putString("Color", "Yellow");
             return "Yellow";
         }
         // Checks for Red
-        else if (red > green && red > blue) {
+        else if (red > Constants.redMinRed && red < Constants.redMaxRed && blue > Constants.blueMinRed && blue < Constants.blueMaxRed && green > Constants.greenMinRed && green < Constants.greenMaxRed) {
+            SmartDashboard.putString("Color", "Red");
             return "Red";
         }
         // Checks for Green
-        else if (green > red && green > blue) {
+        else if (red > Constants.redMinGreen && red < Constants.redMaxGreen && blue > Constants.blueMinGreen && blue < Constants.blueMaxGreen && green > Constants.greenMinGreen && green < Constants.greenMaxGreen) {
+            SmartDashboard.putString("Color", "Green");
             return "Green";
         }
         // Checks for Blue
-        else if (blue > red && blue > green) {
+        else if (red > Constants.redMinBlue && red < Constants.redMaxBlue && blue > Constants.blueMinBlue && blue < Constants.blueMaxBlue && green > Constants.greenMinBlue && green < Constants.greenMaxBlue) {
             return "Blue";
         }
         return null;
@@ -90,10 +94,11 @@ public class Spinner extends SubsystemBase {
         // Previous color (Initialized as starting color)
         String oldColor = checkColor();
         // Current color (currentColor being sensed)
-        String currentColor;
+        String currentColor = "";
 
         // One full revolution is 8 color changes
         while (colorChanges < 8) {
+            SmartDashboard.putNumber("Color changes:", colorChanges);
             spin();
             currentColor = checkColor();
             // Checks when color changes

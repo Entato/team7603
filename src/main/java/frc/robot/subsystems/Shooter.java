@@ -20,8 +20,8 @@ public class Shooter extends SubsystemBase {
    */
   public Shooter() {
     //Initializes two motors to shoot
-    topShooter = new Victor(Constants.shooter1);
-    bottomShooter = new Victor(Constants.shooter2);
+    topShooter = new Victor(Constants.upperShooter);
+    bottomShooter = new Victor(Constants.lowerShooter);
   }
 
   @Override
@@ -31,8 +31,8 @@ public class Shooter extends SubsystemBase {
 
   public void shoot() {
     //Turns on the shooter motors
-    topShooter.set(1);
-    bottomShooter.set(-1);
+    topShooter.set(Constants.shooterLimit);
+    bottomShooter.set(-Constants.shooterLimit);
   }
 
   public void stop() {
