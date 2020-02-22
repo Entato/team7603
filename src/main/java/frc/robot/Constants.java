@@ -49,4 +49,13 @@ public final class Constants {
     public static final int kUltrasonicPort = 0;
     public static final double ultraSonicNone = 0;
     public static final double ultraSonicIn = 0;
+
+    // color values
+    public static final double redMin = 1.14;
+    public static final double redMax = 1.29;
+    public static final double blueMin = 0.27;
+    public static final double blueMax = 0.47;
+    public static final double greenMin = 0.92;
+    public static final double greenMax = 1.4;
+    
 }
