@@ -60,7 +60,7 @@ public class Spinner extends SubsystemBase {
         SmartDashboard.putNumber("Green", green);
         SmartDashboard.putNumber("Blue", blue);
         // Checks for Yellow
-        if (red > Constants.redMin && red < Constants.redMax && blue > Constants.blueMin && blue < Constants.blueMax && green > Constants.greenMin && green < Constants.greenMax) {
+        if (red > Constants.redMinYellow && red < Constants.redMaxYellow && blue > Constants.blueMinYellow && blue < Constants.blueMaxYellow && green > Constants.greenMinYellow && green < Constants.greenMaxYellow) {
             return "Yellow";
         }
         // Checks for Red
