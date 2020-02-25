@@ -15,9 +15,6 @@ public class Shooter extends SubsystemBase {
   private final Victor topShooter;
   private final Victor bottomShooter;
 
-  /**
-   * Creates a new ExampleSubsystem.
-   */
   public Shooter() {
     //Initializes two motors to shoot
     topShooter = new Victor(Constants.upperShooter);

@@ -19,11 +19,6 @@ public class ShootCommand extends CommandBase {
   private final Shooter shooter;
   private final Conveyer conveyer;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public ShootCommand(Shooter shooter, Conveyer conveyer) {
     this.shooter = shooter;
     this.conveyer = conveyer;

@@ -13,9 +13,6 @@ import frc.robot.subsystems.Conveyer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/**
- * An example command that uses an example subsystem.
- */
 public class IntakeCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake intake;
@@ -24,11 +21,6 @@ public class IntakeCommand extends CommandBase {
   private long startTime = 0;
   private long currentTime = 0;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public IntakeCommand(Intake intake, Conveyer conveyer) {
     this.intake = intake;
     this.conveyer = conveyer;

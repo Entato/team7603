@@ -23,7 +23,6 @@ public final class Constants {
     public static final int lowerShooter = 5;
     public static final int intake = 7;
     public static final int arm = 0;
-    
 
     // controller button values
     public static final int buttonA = 1;
@@ -47,9 +46,6 @@ public final class Constants {
 
     // sensor values
     public static final int limitSensor = 9;
-    public static final int kUltrasonicPort = 0;
-    public static final double ultraSonicNone = 0;
-    public static final double ultraSonicIn = 0;
 
     // color values
     public static final double redMinGreen = 0.425;
