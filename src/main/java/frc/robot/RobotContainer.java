@@ -59,15 +59,15 @@ public class RobotContainer {
     goToColorButton.whenHeld(goToColorCommand);
 
     // intake
-    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonY);
+    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
     intakeButton.whenHeld(intakeCommand);
 
     // climber
-    JoystickButton climbButton = new JoystickButton(controller, Constants.buttonLB);
+    POVTrigger climbButton = new POVTrigger(controller, 0);
     climbButton.whenHeld(armUpCommand);
 
     // lift
-    JoystickButton liftButton = new JoystickButton(controller, Constants.buttonRB);
+    POVTrigger liftButton = new POVTrigger(controller, 180);
     liftButton.whenHeld(liftCommand);
 
     //liftspinner
