@@ -2,12 +2,13 @@ package frc.robot;
 
 public final class Constants {
     // Speed limits
-    public static final double driveLimit = 0.6;
+    public static final double driveLimit = 0.8;
     public static final double shooterLimit = -1;
     public static final double spinnerLimit = 1;
     public static final double armLimit = 1;
     public static final double winchLimit = 1;
-    public static final double conveyerLimit = 0.75;
+    public static final double conveyerLimit = 1;
+    public static final double intakeLimit = 0.35;
 
     // Joystick
     public static final int joystickPort = 0;
@@ -45,7 +46,7 @@ public final class Constants {
     public static final int axisRY = 5;
 
     // sensor values
-    public static final int limitSensor = 1;
+    public static final int limitSensor = 9;
     public static final int kUltrasonicPort = 0;
     public static final double ultraSonicNone = 0;
     public static final double ultraSonicIn = 0;
@@ -79,4 +80,6 @@ public final class Constants {
     public static final double greenMinBlue = 0.429;
     public static final double greenMaxBlue = 0.449;
     
+    // time limits
+    public static final double intakeConveyer = 250;
 }

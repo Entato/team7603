@@ -85,7 +85,7 @@ public class Spinner extends SubsystemBase {
         else if (red > Constants.redMinBlue && red < Constants.redMaxBlue && blue > Constants.blueMinBlue && blue < Constants.blueMaxBlue && green > Constants.greenMinBlue && green < Constants.greenMaxBlue) {
             return "Blue";
         }
-        return null;
+        return "No color";
     }
 
     // Method that does 1 full spinner revolution without stopping
@@ -93,6 +93,7 @@ public class Spinner extends SubsystemBase {
         int colorChanges = 0;
         // Previous color (Initialized as starting color)
         String oldColor = checkColor();
+        SmartDashboard.putString("Old Color:", oldColor);
         // Current color (currentColor being sensed)
         String currentColor = "";
 
@@ -101,7 +102,11 @@ public class Spinner extends SubsystemBase {
             SmartDashboard.putNumber("Color changes:", colorChanges);
             spin();
             currentColor = checkColor();
+            SmartDashboard.putString("Current Color:", currentColor);
             // Checks when color changes
+            // if(currentColor == null) {
+            //     currentColor = oldColor;
+            // }
             if (!(currentColor.equals(oldColor))) {
                 // Adds to revolutions counter
                 colorChanges++;

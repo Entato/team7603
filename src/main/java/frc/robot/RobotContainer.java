@@ -26,7 +26,7 @@ public class RobotContainer {
   private final SpinRevolutionCommand spin1RevCommand = new SpinRevolutionCommand(spinner);
   private final SpecificColorCommand goToColorCommand = new SpecificColorCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
-  private final ShootCommand shootCommand = new ShootCommand(shooter);
+  private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
   private final ClimbCommand climbCommand = new ClimbCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
