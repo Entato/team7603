@@ -81,5 +81,7 @@ public final class Constants {
     public static final double greenMaxBlue = 0.449;
     
     // time limits
-    public static final double intakeConveyer = 250;
+    public static final long intakeConveyer = 250;
+    public static final long spinOnce = 0;
+    public static final long spinEighth = 0;
 }

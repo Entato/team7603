@@ -31,7 +31,6 @@ public class Spinner extends SubsystemBase {
     }
 
     public void spin() {
-        //Turns the spinner motor on to spin the control panel
         spinner.set(1);
     }
 
@@ -39,7 +38,10 @@ public class Spinner extends SubsystemBase {
         //Turns the spinner motor off
         spinner.set(0);
     }
-
+    public void spinManual(double speed) {
+        spinner.set(speed);
+    }
+    
     public void upLift() {
         //Lifts up the spinner/color sensor
         solenoid.set(DoubleSolenoid.Value.kForward);
@@ -48,84 +50,6 @@ public class Spinner extends SubsystemBase {
     public void downLift() {
         //Brings the spinner/color sensor down
         solenoid.set(DoubleSolenoid.Value.kReverse);
-    }
-
-    // //Setter for target color
-    // public void setTargetColor(String targetColor){
-    // this.targetColor = targetColor;
-    // }
-    public String checkColor() {
-        //Uses the color sensor to return a color
-        Color detectedColor = m_colorSensor.getColor();
-        double IR = m_colorSensor.getIR();
-        double red = detectedColor.red;
-        double green = detectedColor.green;
-        double blue = detectedColor.blue;
-        // Displays Colors
-        SmartDashboard.putNumber("Red", red);
-        SmartDashboard.putNumber("Green", green);
-        SmartDashboard.putNumber("Blue", blue);
-
-        // Checks for Yellow
-        if (red > Constants.redMinYellow && red < Constants.redMaxYellow && blue > Constants.blueMinYellow && blue < Constants.blueMaxYellow && green > Constants.greenMinYellow && green < Constants.greenMaxYellow) {
-            SmartDashboard.putString("Color", "Yellow");
-            return "Yellow";
-        }
-        // Checks for Red
-        else if (red > Constants.redMinRed && red < Constants.redMaxRed && blue > Constants.blueMinRed && blue < Constants.blueMaxRed && green > Constants.greenMinRed && green < Constants.greenMaxRed) {
-            SmartDashboard.putString("Color", "Red");
-            return "Red";
-        }
-        // Checks for Green
-        else if (red > Constants.redMinGreen && red < Constants.redMaxGreen && blue > Constants.blueMinGreen && blue < Constants.blueMaxGreen && green > Constants.greenMinGreen && green < Constants.greenMaxGreen) {
-            SmartDashboard.putString("Color", "Green");
-            return "Green";
-        }
-        // Checks for Blue
-        else if (red > Constants.redMinBlue && red < Constants.redMaxBlue && blue > Constants.blueMinBlue && blue < Constants.blueMaxBlue && green > Constants.greenMinBlue && green < Constants.greenMaxBlue) {
-            return "Blue";
-        }
-        return "No color";
-    }
-
-    // Method that does 1 full spinner revolution without stopping
-    public void spinOnce() {
-        int colorChanges = 0;
-        // Previous color (Initialized as starting color)
-        String oldColor = checkColor();
-        SmartDashboard.putString("Old Color:", oldColor);
-        // Current color (currentColor being sensed)
-        String currentColor = "";
-
-        // One full revolution is 8 color changes
-        while (colorChanges < 8) {
-            SmartDashboard.putNumber("Color changes:", colorChanges);
-            spin();
-            currentColor = checkColor();
-            SmartDashboard.putString("Current Color:", currentColor);
-            // Checks when color changes
-            // if(currentColor == null) {
-            //     currentColor = oldColor;
-            // }
-            if (!(currentColor.equals(oldColor))) {
-                // Adds to revolutions counter
-                colorChanges++;
-                // Changes current color to the "old color"
-                oldColor = currentColor;
-            }
-
-        }
-    }
-
-    // Method that spins to the selected Color
-    public boolean goToColor(String color) {
-        String currentColor = checkColor();
-        if (currentColor != color) {
-            spin();
-            return goToColor(color);
-        }
-        stopSpin();
-        return true;
     }
 
     @Override

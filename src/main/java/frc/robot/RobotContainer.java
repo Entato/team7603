@@ -23,8 +23,9 @@ public class RobotContainer {
   private final Climber climber = new Climber();
 
   // Commands
-  private final SpinRevolutionCommand spin1RevCommand = new SpinRevolutionCommand(spinner);
-  private final SpecificColorCommand goToColorCommand = new SpecificColorCommand(spinner);
+  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
+  private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
+  private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
@@ -52,12 +53,15 @@ public class RobotContainer {
     shootButton.whenHeld(shootCommand);
 
     // spin one revolution
-    JoystickButton spinButton = new JoystickButton(controller, Constants.buttonB);
-    spinButton.whenHeld(spin1RevCommand);
+    JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
+    spinOnceButton.whenHeld(spinOnceCommand);
 
-    // go to specific color
-    JoystickButton goToColorButton = new JoystickButton(controller, Constants.buttonX);
-    goToColorButton.whenHeld(goToColorCommand);
+    // spin 1/8th of a revolution
+    JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
+    spinEighthButton.whenHeld(spinEighthCommand);
+
+    JoystickButton spinManualButton = new JoystickButton(controller, Constants.LTrigger);
+    spinManualButton.whenHeld(spinManualCommand);
 
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonY);

@@ -51,11 +51,9 @@ public class IntakeCommand extends CommandBase {
       intaking = true;
       // Initializes start time for the conveyer once a ball goes through
       startTime = System.currentTimeMillis();
-      SmartDashboard.putNumber("Start Time:", startTime);
     }
     if (intaking) {
       currentTime = System.currentTimeMillis();
-      SmartDashboard.putNumber("Current Time:", currentTime);
       conveyer.shift();
       if (currentTime - startTime >= Constants.intakeConveyer) {
         intaking = false;
