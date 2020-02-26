@@ -10,15 +10,16 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class NegDriveCommand extends CommandBase {
   // commands must take in a parameter of the subsystems they are using so they
   // can access their methods
-  public NegDriveCommand() {
+  private DriveChain driveChain;
+
+  public NegDriveCommand(DriveChain driveChain) {
+    this.driveChain = driveChain;
   }
 
   // called once and only once when the command is called
   @Override
   public void initialize() {
-    int temp = Constants.rDrive;
-    Constants.rDrive = Constants.lDrive;
-    Constants.lDrive = temp;
+    driveChain.swapLeftRight();
   }
 
   // called many times over while the command is active (50hz)

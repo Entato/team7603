@@ -30,7 +30,7 @@ public class RobotContainer {
   private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
-  private final NegDriveCommand negDriveCommand = new NegDriveCommand();
+  private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
 
   // ignore this for now
   public RobotContainer() {

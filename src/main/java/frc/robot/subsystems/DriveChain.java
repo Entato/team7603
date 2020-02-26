@@ -7,8 +7,8 @@ import frc.robot.Constants;
 //create subsystem classes with methods for all the functionality of the subsystem
 //eg drivechain will need to be able to set the speed of the drives
 public class DriveChain extends SubsystemBase {
-  private final Victor LDrive;
-  private final Victor RDrive;
+  private Victor LDrive;
+  private Victor RDrive;
 
   public DriveChain() {
     //Initializes two motors to control the left and right side of the robot's mobility component
@@ -33,6 +33,11 @@ public class DriveChain extends SubsystemBase {
     RDrive.set(-speed * Constants.driveLimit);
   }
 
+  public void swapLeftRight(){
+    Victor temp = LDrive;
+    LDrive = RDrive;
+    RDrive = temp;
+  }
   public void stop() {
     //Turns off the drive motors
     LDrive.set(0);
