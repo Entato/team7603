@@ -20,7 +20,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private CameraServer camera;
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;

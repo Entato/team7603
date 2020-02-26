@@ -13,15 +13,12 @@ import frc.robot.subsystems.Conveyer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class IntakeCommand extends CommandBase {
+public class ReverseIntakeCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake intake;
   private final Conveyer conveyer;
-  private boolean intaking = false;
-  private long startTime = 0;
-  private long currentTime = 0;
 
-  public IntakeCommand(Intake intake, Conveyer conveyer) {
+  public ReverseIntakeCommand(Intake intake, Conveyer conveyer) {
     this.intake = intake;
     this.conveyer = conveyer;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -33,25 +30,13 @@ public class IntakeCommand extends CommandBase {
   @Override
   public void initialize() {
     // Intake motor is always on
-    intake.intake();
+    intake.reverse();
+    conveyer.reverse();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (!intake.checkBall() && intaking == false) {
-      intaking = true;
-      // Initializes start time for the conveyer once a ball goes through
-      startTime = System.currentTimeMillis();
-    }
-    if (intaking) {
-      currentTime = System.currentTimeMillis();
-      conveyer.shift();
-      if (currentTime - startTime >= Constants.intakeConveyer) {
-        intaking = false;
-        conveyer.stop();
-      }
-    }
   }
 
   // Called once the command ends or is interrupted.

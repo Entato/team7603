@@ -70,10 +70,6 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
-        if (currentTime - startTime >= Constants.endTime) {
-            return true;
-        } else {
-            return false;
-        }
+        return currentTime - startTime >= Constants.endTime;
     }
 }
