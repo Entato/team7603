@@ -28,7 +28,7 @@ public class Shooter extends SubsystemBase {
 
   public void shoot() {
     //Turns on the shooter motors
-    topShooter.set(Constants.shooterLimit);
+    topShooter.set(-Constants.shooterLimit);
     bottomShooter.set(-Constants.shooterLimit);
   }
 
