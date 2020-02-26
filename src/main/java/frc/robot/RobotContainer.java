@@ -22,6 +22,7 @@ public class RobotContainer {
   private final Climber climber = new Climber();
 
   // Commands
+  private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
   private final SpinRevolutionCommand spin1RevCommand = new SpinRevolutionCommand(spinner);
   private final SpecificColorCommand goToColorCommand = new SpecificColorCommand(spinner);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
@@ -82,6 +83,6 @@ public class RobotContainer {
 
   // used for calling the autonomous command
   public Command getAutonomousCommand() {
-    return driveCommand;
+    return autonomousCommand;
   }
 }
