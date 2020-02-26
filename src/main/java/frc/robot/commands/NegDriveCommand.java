@@ -8,22 +8,22 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 //command object is used for calling the subsystems methods
 //this command sets the drives based on the controllers axis
 public class NegDriveCommand extends CommandBase {
-
   // commands must take in a parameter of the subsystems they are using so they
   // can access their methods
-  public NegDriveCommand(){
+  public NegDriveCommand() {
   }
 
   // called once and only once when the command is called
   @Override
   public void initialize() {
-    Constants.driveLimit = -Constants.driveLimit;
+    int temp = Constants.rDrive;
+    Constants.rDrive = Constants.lDrive;
+    Constants.lDrive = temp;
   }
 
   // called many times over while the command is active (50hz)
   @Override
   public void execute() {
-    
   }
 
   // called once the command ends

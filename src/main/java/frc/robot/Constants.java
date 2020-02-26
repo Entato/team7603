@@ -14,8 +14,8 @@ public final class Constants {
     public static final int joystickPort = 0;
 
     // VictorSP ports
-    public static final int lDrive = 1;
-    public static final int rDrive = 3;
+    public static int lDrive = 1;
+    public static int rDrive = 3;
     public static final int belt = 8;
     public static final int winch = 4;
     public static final int spinner = 2;
