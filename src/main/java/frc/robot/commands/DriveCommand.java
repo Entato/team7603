@@ -28,13 +28,8 @@ public class DriveCommand extends CommandBase {
   @Override
   public void execute() {
     // Takes input from the controller to control speed of robot
-    if(Constants.autonomousMode){
-    driveChain.driveLeft(Constants.driveSpeed);
-    driveChain.driveRight(Constants.driveSpeed);
-    }else{
       driveChain.driveLeft(controller.getRawAxis(Constants.axisLY));
       driveChain.driveRight(controller.getRawAxis(Constants.axisRY));  
-    }
   }
 
   // called once the command ends

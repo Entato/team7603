@@ -18,31 +18,49 @@ import edu.wpi.first.wpilibj.DriverStation;
  */
 public class AutonomousCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-    
+
     Shooter shooter;
     DriveChain driveChain;
-    Boolean endCommand       = false;
-    private long startTime   = 0;
+    Boolean endCommand = false;
+    private long startTime = 0;
     private long currentTime = 0;
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
     public AutonomousCommand(Shooter m_shooter, DriveChain m_driveChain) {
-        shooter    = m_shooter;
+        shooter = m_shooter;
         driveChain = m_driveChain;
     }
 
     // called once and only once when the command is called
     @Override
     public void initialize() {
-        
+        startTime = System.currentTimeMillis();
     }
-
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
-        
+        currentTime = System.currentTimeMillis();
+        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.pivotTime1) {
+            driveChain.driveLeft(Constants.driveSpeed);
+            driveChain.driveRight(-Constants.driveSpeed);
+
+        }
+        else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.driveTime1) {
+            driveChain.driveLeft(Constants.driveSpeed);
+            driveChain.driveRight(Constants.driveSpeed);
+
+        }
+         else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.pivotTime2) {
+            driveChain.driveLeft(Constants.driveSpeed);
+            driveChain.driveRight(-Constants.driveSpeed);
+        }
+         else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.driveTime2) {
+            driveChain.driveLeft(Constants.driveSpeed);
+            driveChain.driveRight(Constants.driveSpeed);
+        }
+
     }
 
     // Called once the command ends or is interrupted.
