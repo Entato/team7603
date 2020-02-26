@@ -8,7 +8,9 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Intake;
+import frc.robot.Constants;
 import frc.robot.subsystems.Conveyer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
@@ -45,15 +47,17 @@ public class IntakeCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (intake.checkBall() && intaking == false) {
+    if (!intake.checkBall() && intaking == false) {
       intaking = true;
       // Initializes start time for the conveyer once a ball goes through
       startTime = System.currentTimeMillis();
+      SmartDashboard.putNumber("Start Time:", startTime);
     }
     if (intaking) {
       currentTime = System.currentTimeMillis();
+      SmartDashboard.putNumber("Current Time:", currentTime);
       conveyer.shift();
-      if (currentTime - startTime == 1000) {
+      if (currentTime - startTime >= Constants.intakeConveyer) {
         intaking = false;
         conveyer.stop();
       }

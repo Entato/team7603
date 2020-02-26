@@ -36,7 +36,7 @@ public class Intake extends SubsystemBase {
 
     public void intake() {
         //Turns the motor on to intake the ball
-        intake.set(1);
+        intake.set(Constants.intakeLimit);
     }
 
     public void stop() {

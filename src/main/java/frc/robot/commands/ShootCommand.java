@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Conveyer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
@@ -16,21 +17,25 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ShootCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Shooter shooter;
+  private final Conveyer conveyer;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ShootCommand(Shooter shooter) {
+  public ShootCommand(Shooter shooter, Conveyer conveyer) {
     this.shooter = shooter;
+    this.conveyer = conveyer;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooter);
+    addRequirements(conveyer);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    conveyer.shift();
     shooter.shoot();
   }
 
@@ -43,6 +48,7 @@ public class ShootCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     shooter.stop();
+    conveyer.stop();
   }
 
   // Returns true when the command should end.
