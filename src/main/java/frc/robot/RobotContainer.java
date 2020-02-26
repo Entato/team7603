@@ -24,8 +24,8 @@ public class RobotContainer {
   // Commands
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
-  //private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
-  //private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
+  private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
+  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
@@ -54,8 +54,8 @@ public class RobotContainer {
     shootButton.whenHeld(shootCommand);
 
     // spin one revolution
-    // JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
-    // spinOnceButton.whenHeld(spinOnceCommand);
+    JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
+    spinOnceButton.whenHeld(spinOnceCommand);
 
     // spin 1/8 of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
