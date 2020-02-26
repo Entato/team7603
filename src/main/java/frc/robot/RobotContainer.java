@@ -60,6 +60,7 @@ public class RobotContainer {
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
     spinEighthButton.whenHeld(spinEighthCommand);
 
+    // spin manually
     JoystickButton spinManualButton = new JoystickButton(controller, Constants.LTrigger);
     spinManualButton.whenHeld(spinManualCommand);
 
