@@ -34,6 +34,10 @@ public class Spinner extends SubsystemBase {
         spinner.set(1);
     }
 
+    public void spinManual(double speed) {
+        spinner.set(speed);
+    }
+    
     public void stopSpin() {
         //Turns the spinner motor off
         spinner.set(0);
