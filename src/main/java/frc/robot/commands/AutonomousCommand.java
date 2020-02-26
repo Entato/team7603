@@ -46,17 +46,14 @@ public class AutonomousCommand extends CommandBase {
             driveChain.driveLeft(Constants.driveSpeed);
             driveChain.driveRight(-Constants.driveSpeed);
 
-        }
-        else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.driveTime1) {
+        } else if (currentTime - startTime >= Constants.pivotTime1 && currentTime - startTime <= Constants.driveTime1) {
             driveChain.driveLeft(Constants.driveSpeed);
             driveChain.driveRight(Constants.driveSpeed);
 
-        }
-         else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.pivotTime2) {
+        } else if (currentTime - startTime >= Constants.driveTime1 && currentTime - startTime <= Constants.pivotTime2) {
             driveChain.driveLeft(Constants.driveSpeed);
             driveChain.driveRight(-Constants.driveSpeed);
-        }
-         else if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.driveTime2) {
+        } else if (currentTime - startTime >= Constants.pivotTime2 && currentTime - startTime <= Constants.driveTime2) {
             driveChain.driveLeft(Constants.driveSpeed);
             driveChain.driveRight(Constants.driveSpeed);
         }
@@ -66,11 +63,17 @@ public class AutonomousCommand extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        currentTime = System.currentTimeMillis();
+        if (currentTime - startTime >= Constants.endTime) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
