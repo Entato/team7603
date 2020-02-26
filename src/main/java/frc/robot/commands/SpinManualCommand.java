@@ -28,7 +28,7 @@ public class SpinManualCommand extends CommandBase {
   @Override
   public void execute() {
     // Takes input from the controller to control spinner
-    spinner.spinManual(controller.getRawAxis(Constants.axisLY));
+    spinner.spinManual(controller.getRawAxis(Constants.LTrigger));
   }
 
   // called once the command ends
