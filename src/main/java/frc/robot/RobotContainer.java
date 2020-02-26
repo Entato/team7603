@@ -3,8 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
-import frc.robot.triggers.AxisTrigger;
-import frc.robot.triggers.POVTrigger;
+import frc.robot.triggers.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -28,7 +27,7 @@ public class RobotContainer {
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
-  private final ClimbCommand climbCommand = new ClimbCommand(climber);
+  private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
 
@@ -60,15 +59,15 @@ public class RobotContainer {
     goToColorButton.whenHeld(goToColorCommand);
 
     // intake
-    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonY);
+    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
     intakeButton.whenHeld(intakeCommand);
 
     // climber
-    JoystickButton climbButton = new JoystickButton(controller, Constants.buttonLB);
-    climbButton.whenHeld(climbCommand);
+    POVTrigger climbButton = new POVTrigger(controller, 0);
+    climbButton.whenHeld(armUpCommand);
 
     // lift
-    JoystickButton liftButton = new JoystickButton(controller, Constants.buttonRB);
+    POVTrigger liftButton = new POVTrigger(controller, 180);
     liftButton.whenHeld(liftCommand);
 
     //liftspinner

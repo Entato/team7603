@@ -15,9 +15,6 @@ public class Climber extends SubsystemBase {
     private final Victor winch;
     private final Victor arm;
 
-    /**
-     * Creates a new ExampleSubsystem.
-     */
     public Climber() {
         //Initializes a motor to control the arm and a motor to control the winch
         winch = new Victor(Constants.winch);

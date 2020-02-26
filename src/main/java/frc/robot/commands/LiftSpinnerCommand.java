@@ -10,19 +10,11 @@ package frc.robot.commands;
 import frc.robot.subsystems.Spinner;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/**
- * An example command that uses an example subsystem.
- */
 public class LiftSpinnerCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Spinner lift;
   boolean on = false;
 
-  /**
-   * Creates a new ExampleCommand.
-   *
-   * @param subsystem The subsystem used by this command.
-   */
   public LiftSpinnerCommand(Spinner lift) {
     this.lift = lift;
     // Use addRequirements() here to declare subsystem dependencies.
