@@ -78,5 +78,16 @@ public final class Constants {
     public static final double blueMaxBlue = 1.210;
     public static final double greenMinBlue = 0.429;
     public static final double greenMaxBlue = 0.449;
+
+    //Autonomous variables
+    public static final long driveTime1 = 1;
+    public static final long driveTime2 = 2;
+    public static final long pivotTime1 = 3;
+    public static final long pivotTime2 = 69;
+    public static boolean autonomousMode = true;
+    public static double driveSpeed = 420;
+
+
+
     
 }
