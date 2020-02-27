@@ -67,7 +67,7 @@ public final class Constants {
     public static double driveSpeed = 1;
     
     // time limits
-    public static final double intakeConveyer = 400;
+    public static final double intakeConveyer = 1500;
     public static final long spinOnce = 2390;
     public static final long spinEighth = 55;
 }

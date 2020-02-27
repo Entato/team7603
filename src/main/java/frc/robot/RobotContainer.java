@@ -84,7 +84,7 @@ public class RobotContainer {
 
     // conveyer
     ConveyerTrigger conveyerMove = new ConveyerTrigger(intake);
-    conveyerMove.whileActiveContinuous(conveyerCommand);
+    conveyerMove.whenPressed(conveyerCommand);
 
     // climber
     POVTrigger climbButton = new POVTrigger(controller, Constants.POVup);

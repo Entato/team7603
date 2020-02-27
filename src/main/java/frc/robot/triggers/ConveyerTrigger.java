@@ -6,10 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.triggers;
+
+import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.Intake;
 
-public class ConveyerTrigger extends Trigger{
+public class ConveyerTrigger extends Button{
     private Intake intake;
 
     public ConveyerTrigger(Intake intake){

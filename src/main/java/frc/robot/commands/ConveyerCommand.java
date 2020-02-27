@@ -3,6 +3,7 @@ package frc.robot.commands;
 import frc.robot.Constants;
 import frc.robot.subsystems.Conveyer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //command object is used for calling the subsystems methods
 //this command sets the drives based on the controllers axis
@@ -21,6 +22,7 @@ public class ConveyerCommand extends CommandBase {
     @Override
     public void initialize() {
         startTime = System.currentTimeMillis();
+        SmartDashboard.putNumber("Start time conveyer", startTime);
     }
 
     // called many times over while the command is active (50hz)
@@ -39,6 +41,7 @@ public class ConveyerCommand extends CommandBase {
     @Override
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
+        SmartDashboard.putNumber("Current time conveyer", currentTime);
         return currentTime - startTime >= Constants.intakeConveyer;
     }
 }
