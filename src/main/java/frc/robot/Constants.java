@@ -45,6 +45,16 @@ public final class Constants {
     public static final int axisRX = 4;
     public static final int axisRY = 5;
 
+    //pov button values
+    public static final int POVup = 0;
+    public static final int POVdown = 180;
+    public static final int POVleft = 270;
+    public static final int POVright = 90;
+    public static final int POVupright = 45;
+    public static final int POVupleft = 315;
+    public static final int POVdownright = 135;
+    public static final int POVdownleft = 225;
+
     // sensor values
     public static final int limitSensor = 9;
 
