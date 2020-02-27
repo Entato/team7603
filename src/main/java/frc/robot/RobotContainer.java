@@ -71,11 +71,11 @@ public class RobotContainer {
     intakeButton.whenHeld(intakeCommand);
 
     // climber
-    POVTrigger climbButton = new POVTrigger(controller, 0);
+    POVTrigger climbButton = new POVTrigger(controller, Constants.POVup);
     climbButton.whenHeld(armUpCommand);
 
     // lift
-    POVTrigger liftButton = new POVTrigger(controller, 180);
+    POVTrigger liftButton = new POVTrigger(controller, Constants.POVdown);
     liftButton.whenHeld(liftCommand);
 
     //liftspinner
