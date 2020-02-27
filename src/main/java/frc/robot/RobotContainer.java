@@ -58,13 +58,14 @@ public class RobotContainer {
     JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
     spinOnceButton.whenHeld(spinOnceCommand);
 
-    // spin 1/8 of a revolution
+    // spin 1/8th of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
     spinEighthButton.whenHeld(spinEighthCommand);
 
-    // spin manually 
-    JoystickButton spinManualButton = new JoystickButton(controller, Constants.buttonLJ);
+    // spin manually
+    JoystickButton spinManualButton = new JoystickButton(controller, Constants.LTrigger);
     spinManualButton.whenHeld(spinManualCommand);
+
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
     intakeButton.whenHeld(intakeCommand);
