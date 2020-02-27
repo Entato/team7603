@@ -33,6 +33,7 @@ public class RobotContainer {
   private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer);
   private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
+  private final PullWinchCommand pullWinchCommand = new PullWinchCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
   private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
@@ -63,7 +64,7 @@ public class RobotContainer {
 
     // actually spins it depending on whether the queue has at least 1 spin queued up
     SpinsTrigger spinOnce = new SpinsTrigger(spinner);
-    spinOnce.whenActive(spinOnceCommand);
+    spinOnce.whileActiveContinuous(spinOnceCommand);
 
     // spin 1/8th of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
@@ -92,6 +93,10 @@ public class RobotContainer {
     // lift
     POVTrigger liftButton = new POVTrigger(controller, Constants.POVdown);
     liftButton.whenHeld(liftCommand);
+
+    // retract winch
+    POVTrigger pullWinchButton = new POVTrigger(controller, Constants.POVleft);
+    pullWinchButton.whenHeld(pullWinchCommand);
 
     // liftspinner
     JoystickButton liftSpinnerButton = new JoystickButton(controller, Constants.buttonSTART);

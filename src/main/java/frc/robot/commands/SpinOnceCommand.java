@@ -10,6 +10,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Spinner;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;;
 
 /**
  * An example command that uses an example subsystem.
@@ -30,6 +31,7 @@ public class SpinOnceCommand extends CommandBase {
     @Override
     public void initialize() {
         startTime = System.currentTimeMillis();
+        SmartDashboard.putNumber("Start Time", startTime);
     }
 
     // called many times over while the command is active (50hz)
@@ -37,9 +39,8 @@ public class SpinOnceCommand extends CommandBase {
     public void execute() {
         spinner.spin();
         currentTime = System.currentTimeMillis();
-        if(currentTime - startTime >= Constants.spinOnce) {
-            spinner.stopSpin();
-        }
+        SmartDashboard.putNumber("Current Time", currentTime);
+
     }
 
     // Called once the command ends or is interrupted.
@@ -52,6 +53,6 @@ public class SpinOnceCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return currentTime - startTime >= Constants.spinOnce;
+        return currentTime - startTime > Constants.spinOnce;
     }
 }

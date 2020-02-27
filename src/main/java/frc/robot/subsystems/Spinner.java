@@ -11,12 +11,13 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Spinner extends SubsystemBase {
     //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
     private final Victor spinner = new Victor(Constants.spinner);
     private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
-    private int spins = 0;  
+    public int spins = 0;
 
     public Spinner() {
     }
@@ -39,10 +40,12 @@ public class Spinner extends SubsystemBase {
 
     public void addSpins() {
         spins++;
+        SmartDashboard.putNumber("Spins qd", spins);
     }
     
     public void minusSpins() {
         spins--;
+        SmartDashboard.putNumber("Spins after decrease", spins);
     }
 
     public void stopSpin() {

@@ -18,6 +18,6 @@ public class ConveyerTrigger extends Trigger{
 
     @Override
     public boolean get(){
-        return intake.checkBall();
+        return !intake.checkBall();
     }
 }

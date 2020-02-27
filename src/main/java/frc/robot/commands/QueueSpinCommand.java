@@ -29,11 +29,13 @@ public class QueueSpinCommand extends CommandBase {
     // called once the command ends
     @Override
     public void end(boolean interrupted) {
+        
+
     }
 
     // logic to check if the command is finished
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 }
