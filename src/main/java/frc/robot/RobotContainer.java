@@ -29,7 +29,8 @@ public class RobotContainer {
   private final SpinManualRightCommand spinManualRightCommand = new SpinManualRightCommand(spinner, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
-  private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
+  private final IntakeCommand intakeCommand = new IntakeCommand(intake);
+  private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer);
   private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
@@ -79,6 +80,10 @@ public class RobotContainer {
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
     intakeButton.whenHeld(intakeCommand);
+
+    // conveyer
+    ConveyerTrigger conveyerMove = new ConveyerTrigger(intake);
+    conveyerMove.whileActiveContinuous(conveyerCommand);
 
     // climber
     POVTrigger climbButton = new POVTrigger(controller, Constants.POVup);
