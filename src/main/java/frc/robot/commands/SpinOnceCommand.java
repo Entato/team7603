@@ -8,70 +8,51 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.Spinner;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.DriverStation;
 
 /**
  * An example command that uses an example subsystem.
  */
-public class SpecificColorCommand extends CommandBase {
+public class SpinOnceCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
-    String targetColor;
-    Boolean endCommand = false;
+    private long startTime = 0;
+    private long currentTime = 0;
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public SpecificColorCommand(Spinner m_shooter) {
-        spinner = m_shooter;
+    public SpinOnceCommand(Spinner spinner) {
+        this.spinner = spinner;
     }
 
     // called once and only once when the command is called
     @Override
-    // The given colour from FRC will initialize targetColor
     public void initialize() {
-        // Set color sent by FRC
-        targetColor = DriverStation.getInstance().getGameSpecificMessage();
-        if (targetColor.length() > 0) {
-            switch (targetColor.charAt(0)) {
-            case 'B':
-                endCommand = spinner.goToColor("Blue");
-                break;
-            case 'G':
-                endCommand = spinner.goToColor("Green");
-                break;
-            case 'R':
-                endCommand = spinner.goToColor("Red");
-                break;
-            case 'Y':
-                endCommand = spinner.goToColor("Yelow");
-                break;
-            default:
-                // This is corrupt data
-                break;
-            }
-        } else {
-            // Code for no data received yet
-        }
+        startTime = System.currentTimeMillis();
     }
-    // After button is pressed, move to shifted color sent to use by FRC
-    // Returns a boolean value that indicates whether the spinner has been spun to
-    // the correct colour
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
+        spinner.spin();
+        currentTime = System.currentTimeMillis();
+        if(currentTime - startTime >= Constants.spinOnce) {
+            spinner.stopSpin();
+        }
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        spinner.stopSpin();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return endCommand;
+        return true;
     }
 }

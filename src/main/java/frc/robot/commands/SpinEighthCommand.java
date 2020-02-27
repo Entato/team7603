@@ -16,30 +16,32 @@ import frc.robot.Constants;
 /**
  * An example command that uses an example subsystem.
  */
-public class SpinRevolutionCommand extends CommandBase {
+public class SpinEighthCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     Spinner spinner;
+    private long startTime = 0;
+    private long currentTime = 0;
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public SpinRevolutionCommand(Spinner spinner) {
+    public SpinEighthCommand(Spinner spinner) {
         this.spinner = spinner;
     }
 
     // called once and only once when the command is called
     @Override
     public void initialize() {
-        for (int i = 0; i < 4; i++) {
-            // Calls method that spins the wheel 1 full revolution
-            spinner.spinOnce();
-        }
+        startTime = System.currentTimeMillis();
     }
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
-        // spinner.sensor();
-
+        spinner.spin();
+        currentTime = System.currentTimeMillis();
+        if(currentTime - startTime >= Constants.spinEighth) {
+            spinner.stopSpin();
+        }
     }
 
     // Called once the command ends or is interrupted.
