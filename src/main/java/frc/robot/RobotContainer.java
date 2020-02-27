@@ -35,6 +35,7 @@ public class RobotContainer {
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
   private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
+  private final QueueSpinCommand queueSpinCommand = new QueueSpinCommand(spinner);
 
   // ignore this for now
   public RobotContainer() {
@@ -55,9 +56,13 @@ public class RobotContainer {
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
     shootButton.whenHeld(shootCommand);
 
-    // spin one revolution
-    JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
-    spinOnceButton.whenPressed(spinOnceCommand);
+    // queues spin one revolution
+    JoystickButton queueSpinButton = new JoystickButton(controller, Constants.buttonB);
+    queueSpinButton.whenPressed(queueSpinCommand);
+
+    // actually spins it depending on whether the queue has at least 1 spin queued up
+    SpinsTrigger spinOnce = new SpinsTrigger(spinner);
+    spinOnce.whenActive(spinOnceCommand);
 
     // spin 1/8th of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
