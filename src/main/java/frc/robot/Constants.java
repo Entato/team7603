@@ -4,15 +4,18 @@ public final class Constants {
     // Speed limits
     public static final double driveLimit = 0.8;
     public static final double shooterLimit = -0.5;
+    public static final double shooterLimitIntake = -0.4;
     public static final double spinnerLimit = 1;
     public static final double spinnerManualLimit = 0.5;
     public static final double armLimit = 1;
     public static final double winchLimit = 1;
     public static final double conveyerLimit = 1;
+    public static final double conveyerReverseLimit = -0.5;
     public static final double intakeLimit = 0.35;
 
     // Joystick
     public static final int joystickPort = 0;
+    //public static final int controllerPort = 1;
 
     // VictorSP ports
     public static final int lDrive = 1;
@@ -67,7 +70,8 @@ public final class Constants {
     public static double driveSpeed = 1;
     
     // time limits
-    public static final double intakeConveyer = 1500;
+    //Using .6 for 3 balls
+    public static final double intakeConveyer = 600;
     public static final long spinOnce = 2390;
     public static final long spinEighth = 55;
 }

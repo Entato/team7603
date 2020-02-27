@@ -32,6 +32,10 @@ public class Shooter extends SubsystemBase {
     bottomShooter.set(-Constants.shooterLimit);
   }
 
+  public void intakeHelp() {
+    bottomShooter.set(-Constants.shooterLimitIntake);
+  }
+
   public void stop() {
     //Turns off the shooter motors
     topShooter.set(0);

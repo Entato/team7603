@@ -34,7 +34,7 @@ public class Conveyer extends SubsystemBase {
 
   public void reverse() {
     //Turns the conveyer in reverse
-    conveyer.set(-Constants.conveyerLimit);
+    conveyer.set(Constants.conveyerReverseLimit);
   }
 
   public void stop() {

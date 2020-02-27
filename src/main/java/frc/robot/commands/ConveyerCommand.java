@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.Conveyer;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,12 +10,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //this command sets the drives based on the controllers axis
 public class ConveyerCommand extends CommandBase {
     public final Conveyer conveyer;
+    public final Shooter bottomShooter;
     public long startTime = 0;
     public long currentTime = 0;
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public ConveyerCommand(Conveyer conveyer) {
+    public ConveyerCommand(Conveyer conveyer, Shooter bottomShooter) {
+        this.bottomShooter = bottomShooter;
         this.conveyer = conveyer;
     }
 
@@ -29,12 +32,15 @@ public class ConveyerCommand extends CommandBase {
     @Override
     public void execute() {
         conveyer.shift();
+        bottomShooter.intakeHelp();
+
     }
 
     // called once the command ends
     @Override
     public void end(boolean interrupted) {
         conveyer.stop();
+        bottomShooter.stop();
     }
 
     // logic to check if the command is finished

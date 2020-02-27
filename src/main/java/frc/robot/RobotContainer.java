@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //configureButtonBindings() method creates joystickbutton objects to call a command
 public class RobotContainer {
   // controller
-  private final Joystick controller = new Joystick(Constants.joystickPort);
+  private final Joystick controller = new Joystick(Constants.controllerPort);
+  private final Joystick joystick = new Joystick(Constants.joystickPort);
 
   // Subsystems
   private final Spinner spinner = new Spinner();
@@ -30,7 +31,7 @@ public class RobotContainer {
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake);
-  private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer);
+  private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer, shooter);
   private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
   private final LiftCommand liftCommand = new LiftCommand(climber);
   private final PullWinchCommand pullWinchCommand = new PullWinchCommand(climber);
@@ -109,6 +110,7 @@ public class RobotContainer {
     // reverse intake
     JoystickButton reverseIntakeButton = new JoystickButton(controller, Constants.buttonLB);
     reverseIntakeButton.whenHeld(reverseIntakeCommand);
+
   }
 
   // used for calling the autonomous command
