@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // controller
   private final Joystick controller = new Joystick(Constants.controllerPort);
-  private final Joystick joystick = new Joystick(Constants.joystickPort);
 
   // Subsystems
   private final Spinner spinner = new Spinner();
