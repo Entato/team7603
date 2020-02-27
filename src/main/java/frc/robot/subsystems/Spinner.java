@@ -21,8 +21,6 @@ import com.revrobotics.ColorSensorV3;
 
 public class Spinner extends SubsystemBase {
     //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
-    private final I2C.Port i2cPort = I2C.Port.kOnboard;
-    private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     private final Victor spinner = new Victor(Constants.spinner);
     private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
 
@@ -33,8 +31,12 @@ public class Spinner extends SubsystemBase {
         spinner.set(1);
     }
 
-    public void spinManual(double speed) {
-        spinner.set(speed);
+    public void spinManualLeft(double speed) {
+        spinner.set(speed * Constants.spinnerManualLimit);
+    }
+
+    public void spinManualRight(double speed) {
+        spinner.set(speed * -Constants.spinnerManualLimit);
     }
     
     public void stopSpin() {

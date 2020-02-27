@@ -25,7 +25,8 @@ public class RobotContainer {
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
-  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
+  private final SpinManualLeftCommand spinManualLeftCommand = new SpinManualLeftCommand(spinner, controller);
+  private final SpinManualRightCommand spinManualRightCommand = new SpinManualRightCommand(spinner, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake, conveyer);
@@ -56,15 +57,19 @@ public class RobotContainer {
 
     // spin one revolution
     JoystickButton spinOnceButton = new JoystickButton(controller, Constants.buttonB);
-    spinOnceButton.whenHeld(spinOnceCommand);
+    spinOnceButton.whenPressed(spinOnceCommand);
 
     // spin 1/8th of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
-    spinEighthButton.whenHeld(spinEighthCommand);
+    spinEighthButton.whenPressed(spinEighthCommand);
 
-    // spin manually 
-    AxisTrigger spinManualButton = new AxisTrigger(controller, Constants.LTrigger);
-    spinManualButton.whenHeld(spinManualCommand);
+    // spin manually left
+    AxisTrigger spinManualLeftButton = new AxisTrigger(controller, Constants.LTrigger);
+    spinManualLeftButton.whenHeld(spinManualLeftCommand);
+
+    // spin manually right
+    AxisTrigger spinManualRightButton = new AxisTrigger(controller, Constants.RTrigger);
+    spinManualRightButton.whenHeld(spinManualRightCommand);
 
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
@@ -78,15 +83,15 @@ public class RobotContainer {
     POVTrigger liftButton = new POVTrigger(controller, 180);
     liftButton.whenHeld(liftCommand);
 
-    //liftspinner
+    // liftspinner
     JoystickButton liftSpinnerButton = new JoystickButton(controller, Constants.buttonSTART);
     liftSpinnerButton.whenHeld(liftSpinnerCommand);
 
-    //flip front and back
+    // flip front and back
     JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
     flipdriveButton.whenPressed(negDriveCommand);
 
-    //reverse intake
+    // reverse intake
     JoystickButton reverseIntakeButton = new JoystickButton(controller, Constants.buttonLB);
     reverseIntakeButton.whenHeld(reverseIntakeCommand);
   }

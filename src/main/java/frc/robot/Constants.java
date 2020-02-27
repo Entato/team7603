@@ -5,6 +5,7 @@ public final class Constants {
     public static final double driveLimit = 0.8;
     public static final double shooterLimit = -0.5;
     public static final double spinnerLimit = 1;
+    public static final double spinnerManualLimit = 0.5;
     public static final double armLimit = 1;
     public static final double winchLimit = 1;
     public static final double conveyerLimit = 1;
@@ -57,6 +58,6 @@ public final class Constants {
     
     // time limits
     public static final double intakeConveyer = 350;
-    public static final long spinOnce = 0;
-    public static final long spinEighth = 0;
+    public static final long spinOnce = 2190;
+    public static final long spinEighth = 55;
 }
