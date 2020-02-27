@@ -21,13 +21,12 @@ public class ConveyerCommand extends CommandBase {
     @Override
     public void initialize() {
         startTime = System.currentTimeMillis();
-        conveyer.shift();
     }
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
-      conveyer.shift();
+        conveyer.shift();
     }
 
     // called once the command ends

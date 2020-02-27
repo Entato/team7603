@@ -24,7 +24,7 @@ public class LiftCommand extends CommandBase {
   @Override
   public void initialize() {
     // As the arm starts to retract, the winch starts pulling the robot up
-    arm.retract();
+    //arm.retract();
     // Method for the winch
     arm.release();
   }

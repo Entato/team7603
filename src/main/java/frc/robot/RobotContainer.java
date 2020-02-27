@@ -94,7 +94,7 @@ public class RobotContainer {
     POVTrigger liftButton = new POVTrigger(controller, Constants.POVdown);
     liftButton.whenHeld(liftCommand);
 
-    // retract winch
+    // release winch
     POVTrigger pullWinchButton = new POVTrigger(controller, Constants.POVleft);
     pullWinchButton.whenHeld(pullWinchCommand);
 
