@@ -34,6 +34,10 @@ public class Intake extends SubsystemBase {
         intake.set(Constants.intakeLimit);
     }
 
+    public void reverse(){
+        intake.set(-Constants.intakeLimit);
+    }
+
     public void stop() {
         //Turns the motor off
         intake.set(0);

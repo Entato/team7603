@@ -32,6 +32,7 @@ public class RobotContainer {
   private final LiftCommand liftCommand = new LiftCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
+  private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
 
   // ignore this for now
   public RobotContainer() {
@@ -79,6 +80,10 @@ public class RobotContainer {
     //flip front and back
     JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
     flipdriveButton.whenPressed(negDriveCommand);
+
+    //reverse intake
+    JoystickButton reverseIntakeButton = new JoystickButton(controller, Constants.buttonLB);
+    reverseIntakeButton.whenHeld(reverseIntakeCommand);
   }
 
   // used for calling the autonomous command
