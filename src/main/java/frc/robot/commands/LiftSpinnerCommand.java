@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class LiftSpinnerCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Spinner lift;
-  boolean on = false;
 
   public LiftSpinnerCommand(Spinner lift) {
     this.lift = lift;
@@ -24,9 +23,9 @@ public class LiftSpinnerCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    if (on) {
+    if (!lift.getActive()) {
       lift.upLift();
-    } else if (!on) {
+    } else if (lift.getActive()) {
       lift.downLift();
     }
   }
@@ -39,7 +38,6 @@ public class LiftSpinnerCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    on = !on;
   }
 
   // Returns true when the command should end.

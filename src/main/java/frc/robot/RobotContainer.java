@@ -61,21 +61,25 @@ public class RobotContainer {
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonLB);
     shootButton.whenHeld(shootCommand);
 
+    //trigger to check if the spinner is up
+    SpinnerActiveTrigger spinnerActiveTrigger = new SpinnerActiveTrigger(spinner);
+
     // queues spin one revolution
     JoystickButton queueSpinButton = new JoystickButton(controller, Constants.buttonB);
-    queueSpinButton.whenPressed(queueSpinCommand);
+    queueSpinButton.and(spinnerActiveTrigger).whenActive(queueSpinCommand);
 
     // actually spins it depending on whether the queue has at least 1 spin queued up
     SpinsTrigger spinOnce = new SpinsTrigger(spinner);
-    spinOnce.whileActiveContinuous(spinOnceCommand);
+    spinOnce.and(spinnerActiveTrigger).whileActiveContinuous(spinOnceCommand);
 
     // spin 1/8th of a revolution
     JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonA);
-    spinEighthButton.whenPressed(spinEighthCommand);
+    spinEighthButton.and(spinnerActiveTrigger).whenActive(spinEighthCommand);
 
     // spin manually left
     AxisTrigger spinManualButton = new AxisTrigger(joystick, 0);
-    spinManualButton.whenHeld(spinManualCommand);
+    spinManualButton.and(spinnerActiveTrigger).whileActiveContinuous(spinManualCommand);
+
 
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);

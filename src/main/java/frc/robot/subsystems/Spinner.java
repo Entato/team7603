@@ -17,6 +17,7 @@ public class Spinner extends SubsystemBase {
     //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
     private final Victor spinner = new Victor(Constants.spinner);
     private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
+    private boolean active = false;
     public int spins = 0;
 
     public Spinner() {
@@ -48,15 +49,21 @@ public class Spinner extends SubsystemBase {
         //Turns the spinner motor off
         spinner.set(0);
     }
+
+    public boolean getActive(){
+        return this.active;
+    }
     
     public void upLift() {
         //Lifts up the spinner/color sensor
         solenoid.set(DoubleSolenoid.Value.kForward);
+        this.active = true;
     }
 
     public void downLift() {
         //Brings the spinner/color sensor down
         solenoid.set(DoubleSolenoid.Value.kReverse);
+        this.active = false;
     }
 
     @Override

@@ -7,18 +7,18 @@
 
 package frc.robot.triggers;
 
-import edu.wpi.first.wpilibj2.command.button.Button;
-import frc.robot.subsystems.Intake;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.subsystems.Spinner;
 
-public class ConveyerTrigger extends Button{
-    private Intake intake;
+public class SpinnerActiveTrigger extends Trigger{
+    private Spinner spinner;
 
-    public ConveyerTrigger(Intake intake){
-        this.intake = intake;
+    public SpinnerActiveTrigger(Spinner spinner){
+        this.spinner = spinner;
     }
 
     @Override
     public boolean get(){
-        return !intake.checkBall();
+        return spinner.getActive();
     }
 }
