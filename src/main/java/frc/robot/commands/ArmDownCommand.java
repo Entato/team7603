@@ -10,11 +10,11 @@ package frc.robot.commands;
 import frc.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class LiftCommand extends CommandBase {
+public class ArmDownCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Climber arm;
 
-  public LiftCommand(Climber arm) {
+  public ArmDownCommand(Climber arm) {
     this.arm = arm;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(arm);
@@ -25,8 +25,6 @@ public class LiftCommand extends CommandBase {
   public void initialize() {
     // As the arm starts to retract, the winch starts pulling the robot up
     arm.retract();
-    // Method for the winch
-    arm.release();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,7 +35,7 @@ public class LiftCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // Stops the winch motors (arm motor is already set to 0)
+    // Sets the arm motor (winch motor already set to 0)
     arm.stop();
   }
 

@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // controller
   private final Joystick controller = new Joystick(Constants.controllerPort);
+  private final Joystick joystick = new Joystick(Constants.joystickPort);
+
 
   // Subsystems
   private final Spinner spinner = new Spinner();
@@ -25,15 +27,15 @@ public class RobotContainer {
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
-  private final SpinManualLeftCommand spinManualLeftCommand = new SpinManualLeftCommand(spinner, controller);
-  private final SpinManualRightCommand spinManualRightCommand = new SpinManualRightCommand(spinner, controller);
+  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake);
   private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer, shooter);
+  private final ArmDownCommand armDownCommand = new ArmDownCommand(climber);
   private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
-  private final LiftCommand liftCommand = new LiftCommand(climber);
-  private final PullWinchCommand pullWinchCommand = new PullWinchCommand(climber);
+  private final ExtractWinchCommand extractWinchCommand = new ExtractWinchCommand(climber);
+  private final ReleaseWinchCommand releaseWinchCommand = new ReleaseWinchCommand(climber);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
   private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
@@ -55,7 +57,7 @@ public class RobotContainer {
     // shooter
     // create joystickbutton object with parameters of the joystick and the button
     // ID
-    JoystickButton shootButton = new JoystickButton(controller, Constants.buttonA);
+    JoystickButton shootButton = new JoystickButton(controller, Constants.buttonLB);
     shootButton.whenHeld(shootCommand);
 
     // queues spin one revolution
@@ -67,16 +69,12 @@ public class RobotContainer {
     spinOnce.whileActiveContinuous(spinOnceCommand);
 
     // spin 1/8th of a revolution
-    JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonX);
+    JoystickButton spinEighthButton = new JoystickButton(controller, Constants.buttonA);
     spinEighthButton.whenPressed(spinEighthCommand);
 
     // spin manually left
-    AxisTrigger spinManualLeftButton = new AxisTrigger(controller, Constants.LTrigger);
-    spinManualLeftButton.whenHeld(spinManualLeftCommand);
-
-    // spin manually right
-    AxisTrigger spinManualRightButton = new AxisTrigger(controller, Constants.RTrigger);
-    spinManualRightButton.whenHeld(spinManualRightCommand);
+    AxisTrigger spinManualButton = new AxisTrigger(joystick, 0);
+    spinManualButton.whenHeld(spinManualCommand);
 
     // intake
     JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
@@ -86,20 +84,24 @@ public class RobotContainer {
     ConveyerTrigger conveyerMove = new ConveyerTrigger(intake);
     conveyerMove.whenPressed(conveyerCommand);
 
-    // climber
-    POVTrigger climbButton = new POVTrigger(controller, Constants.POVup);
-    climbButton.whenHeld(armUpCommand);
+    // arm down
+    JoystickButton armDownButton = new JoystickButton(joystick, 3);
+    armDownButton.whenHeld(armDownCommand);
 
-    // lift
-    POVTrigger liftButton = new POVTrigger(controller, Constants.POVdown);
-    liftButton.whenHeld(liftCommand);
+    // arm up
+    JoystickButton armUpButton = new JoystickButton(joystick, 4);
+    armUpButton.whenHeld(armUpCommand);
+
+    // lift robot / extract winch
+    JoystickButton liftButton = new JoystickButton(joystick, 11);
+    liftButton.whenHeld(extractWinchCommand);
 
     // release winch
-    POVTrigger pullWinchButton = new POVTrigger(controller, Constants.POVleft);
-    pullWinchButton.whenHeld(pullWinchCommand);
+    JoystickButton releaseWinchButton = new JoystickButton(joystick, 12);
+    releaseWinchButton.whenHeld(releaseWinchCommand);
 
     // liftspinner
-    JoystickButton liftSpinnerButton = new JoystickButton(controller, Constants.buttonSTART);
+    JoystickButton liftSpinnerButton = new JoystickButton(joystick, 7);
     liftSpinnerButton.whenHeld(liftSpinnerCommand);
 
     // flip front and back
@@ -107,7 +109,7 @@ public class RobotContainer {
     flipdriveButton.whenPressed(negDriveCommand);
 
     // reverse intake
-    JoystickButton reverseIntakeButton = new JoystickButton(controller, Constants.buttonLB);
+    JoystickButton reverseIntakeButton = new JoystickButton(joystick, 8);
     reverseIntakeButton.whenHeld(reverseIntakeCommand);
 
   }

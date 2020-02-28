@@ -10,11 +10,11 @@ package frc.robot.commands;
 import frc.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class PullWinchCommand extends CommandBase {
+public class ReleaseWinchCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
     private final Climber arm;
 
-    public PullWinchCommand(Climber arm) {
+    public ReleaseWinchCommand(Climber arm) {
         this.arm = arm;
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(arm);

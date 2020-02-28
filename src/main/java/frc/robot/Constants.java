@@ -14,6 +14,7 @@ public final class Constants {
     public static final double intakeLimit = 0.35;
 
     // Joystick
+    public static final int joystickPort = 0;
     public static final int controllerPort = 1;
 
     // VictorSP ports

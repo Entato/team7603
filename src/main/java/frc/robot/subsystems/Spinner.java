@@ -26,12 +26,8 @@ public class Spinner extends SubsystemBase {
         spinner.set(1);
     }
 
-    public void spinManualLeft(double speed) {
+    public void spinManual(double speed) {
         spinner.set(speed * Constants.spinnerManualLimit);
-    }
-
-    public void spinManualRight(double speed) {
-        spinner.set(speed * -Constants.spinnerManualLimit);
     }
 
     public int getSpins() {

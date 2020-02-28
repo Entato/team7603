@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 //command object is used for calling the subsystems methods
 //this command sets the drives based on the controllers axis
-public class SpinManualLeftCommand extends CommandBase {
+public class SpinManualCommand extends CommandBase {
   private final Spinner spinner;
   private final Joystick controller;
 
   // commands must take in a parameter of the subsystems they are using so they
   // can access their methods
-  public SpinManualLeftCommand(Spinner spinner, Joystick controller) {
+  public SpinManualCommand(Spinner spinner, Joystick controller) {
     this.spinner = spinner;
     this.controller = controller;
     addRequirements(spinner);
@@ -28,7 +28,7 @@ public class SpinManualLeftCommand extends CommandBase {
   @Override
   public void execute() {
     // Takes input from the controller to control spinner
-    spinner.spinManualLeft(controller.getRawAxis(Constants.LTrigger));
+    spinner.spinManual(controller.getRawAxis(0));
   }
 
   // called once the command ends
