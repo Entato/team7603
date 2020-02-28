@@ -11,14 +11,12 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class Climber extends SubsystemBase {
+public class Winch extends SubsystemBase {
     private final Victor winch;
-    private final Victor arm;
 
-    public Climber() {
-        //Initializes a motor to control the arm and a motor to control the winch
+    public Winch() {
+        // Initializes a motor to control the arm and a motor to control the winch
         winch = new Victor(Constants.winch);
-        arm = new Victor(Constants.arm);
     }
 
     @Override
@@ -26,29 +24,18 @@ public class Climber extends SubsystemBase {
         // This method will be called once per scheduler run
     }
 
-    public void extend() {
-        //Turns the motor on to extend the arm
-        arm.set(Constants.armLimit);
-    }
-
-    public void retract() {
-        //Turns the motor in reverse to pull the arm back
-        arm.set(-Constants.armLimit);
-    }
-
     public void pull() {
-        //Turns the winch on to pull the robot up
+        // Turns the winch on to pull the robot up
         winch.set(Constants.winchLimit);
     }
 
     public void release() {
-        //Turns the winch in reverse to release the winch
+        // Turns the winch in reverse to release the winch
         winch.set(-Constants.winchLimit);
     }
 
     public void stop() {
-        //Turns the winch and arm motors off
-        arm.set(0);
+        // Turns the winch motors off
         winch.set(0);
     }
 }

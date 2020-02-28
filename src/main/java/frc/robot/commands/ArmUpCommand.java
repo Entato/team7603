@@ -7,14 +7,14 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.Arm;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ArmUpCommand extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
-  private final Climber arm;
+  private final Arm arm;
 
-  public ArmUpCommand(Climber arm) {
+  public ArmUpCommand(Arm arm) {
     this.arm = arm;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(arm);

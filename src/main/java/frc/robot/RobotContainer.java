@@ -21,21 +21,22 @@ public class RobotContainer {
   private final Shooter shooter = new Shooter();
   private final Intake intake = new Intake();
   private final Conveyer conveyer = new Conveyer();
-  private final Climber climber = new Climber();
+  private final Arm arm = new Arm();
+  private final Winch winch = new Winch();
 
   // Commands
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
-  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, controller);
+  private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, joystick);
   private final DriveCommand driveCommand = new DriveCommand(driveChain, controller);
   private final ShootCommand shootCommand = new ShootCommand(shooter, conveyer);
   private final IntakeCommand intakeCommand = new IntakeCommand(intake);
   private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer, shooter);
-  private final ArmDownCommand armDownCommand = new ArmDownCommand(climber);
-  private final ArmUpCommand armUpCommand = new ArmUpCommand(climber);
-  private final ExtractWinchCommand extractWinchCommand = new ExtractWinchCommand(climber);
-  private final ReleaseWinchCommand releaseWinchCommand = new ReleaseWinchCommand(climber);
+  private final ArmDownCommand armDownCommand = new ArmDownCommand(arm);
+  private final ArmUpCommand armUpCommand = new ArmUpCommand(arm);
+  private final ExtractWinchCommand extractWinchCommand = new ExtractWinchCommand(winch);
+  private final ReleaseWinchCommand releaseWinchCommand = new ReleaseWinchCommand(winch);
   private final LiftSpinnerCommand liftSpinnerCommand = new LiftSpinnerCommand(spinner);
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
   private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
