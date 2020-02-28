@@ -16,9 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Intake extends SubsystemBase {
     private final Victor intake;
     private DigitalInput limit = new DigitalInput(Constants.limitSensor);
-    /**
-     * Creates a new ExampleSubsystem.
-     */
+
     public Intake() {
         //Initializes the intake motor
         intake = new Victor(Constants.intake);

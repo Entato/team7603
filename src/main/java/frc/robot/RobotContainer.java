@@ -14,7 +14,6 @@ public class RobotContainer {
   private final Joystick controller = new Joystick(Constants.controllerPort);
   private final Joystick joystick = new Joystick(Constants.joystickPort);
 
-
   // Subsystems
   private final Spinner spinner = new Spinner();
   private final DriveChain driveChain = new DriveChain();
@@ -50,19 +49,61 @@ public class RobotContainer {
   // method for mapping buttons to call commands
   private void configureButtonBindings() {
 
+    //------------------ drive functions -----------------------
     // sets the default command for the drive subsystem to the drive command
     // while the drive subsystem is not being used by another command the drive
     // command will be active
     driveChain.setDefaultCommand(driveCommand);
+    
+    // flip front and back
+    JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
+    flipdriveButton.whenPressed(negDriveCommand);
 
+    //------------------ shoot functions ------------------------
     // shooter
     // create joystickbutton object with parameters of the joystick and the button
     // ID
     JoystickButton shootButton = new JoystickButton(controller, Constants.buttonLB);
     shootButton.whenHeld(shootCommand);
 
+    //------------------ intake functions ------------------------
+    // intake
+    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
+    intakeButton.whenHeld(intakeCommand);
+
+    // conveyer
+    ConveyerTrigger conveyerMove = new ConveyerTrigger(intake);
+    conveyerMove.whenPressed(conveyerCommand);
+
+    // reverse intake
+    JoystickButton reverseIntakeButton = new JoystickButton(joystick, 8);
+    reverseIntakeButton.whenHeld(reverseIntakeCommand);
+
+    //---------------- climber functions -------------------
+    // release winch
+    JoystickButton releaseWinchButton = new JoystickButton(joystick, 12);
+    releaseWinchButton.whenHeld(releaseWinchCommand);
+
+    // lift robot / extract winch
+    JoystickButton liftButton = new JoystickButton(joystick, 11);
+    liftButton.whenHeld(extractWinchCommand);
+
+    // arm down
+    JoystickButton armDownButton = new JoystickButton(joystick, 3);
+    armDownButton.whenHeld(armDownCommand);
+
+    // arm up
+    JoystickButton armUpButton = new JoystickButton(joystick, 4);
+    armUpButton.whenHeld(armUpCommand);
+
+
+    //---------------- spinner functions -------------------
     //trigger to check if the spinner is up
     SpinnerActiveTrigger spinnerActiveTrigger = new SpinnerActiveTrigger(spinner);
+
+    // liftspinner
+    JoystickButton liftSpinnerButton = new JoystickButton(joystick, 7);
+    liftSpinnerButton.whenHeld(liftSpinnerCommand);
 
     // queues spin one revolution
     JoystickButton queueSpinButton = new JoystickButton(controller, Constants.buttonB);
@@ -79,44 +120,6 @@ public class RobotContainer {
     // spin manually left
     AxisTrigger spinManualButton = new AxisTrigger(joystick, 0);
     spinManualButton.and(spinnerActiveTrigger).whileActiveContinuous(spinManualCommand);
-
-
-    // intake
-    JoystickButton intakeButton = new JoystickButton(controller, Constants.buttonRB);
-    intakeButton.whenHeld(intakeCommand);
-
-    // conveyer
-    ConveyerTrigger conveyerMove = new ConveyerTrigger(intake);
-    conveyerMove.whenPressed(conveyerCommand);
-
-    // arm down
-    JoystickButton armDownButton = new JoystickButton(joystick, 3);
-    armDownButton.whenHeld(armDownCommand);
-
-    // arm up
-    JoystickButton armUpButton = new JoystickButton(joystick, 4);
-    armUpButton.whenHeld(armUpCommand);
-
-    // lift robot / extract winch
-    JoystickButton liftButton = new JoystickButton(joystick, 11);
-    liftButton.whenHeld(extractWinchCommand);
-
-    // release winch
-    JoystickButton releaseWinchButton = new JoystickButton(joystick, 12);
-    releaseWinchButton.whenHeld(releaseWinchCommand);
-
-    // liftspinner
-    JoystickButton liftSpinnerButton = new JoystickButton(joystick, 7);
-    liftSpinnerButton.whenHeld(liftSpinnerCommand);
-
-    // flip front and back
-    JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
-    flipdriveButton.whenPressed(negDriveCommand);
-
-    // reverse intake
-    JoystickButton reverseIntakeButton = new JoystickButton(joystick, 8);
-    reverseIntakeButton.whenHeld(reverseIntakeCommand);
-
   }
 
   // used for calling the autonomous command

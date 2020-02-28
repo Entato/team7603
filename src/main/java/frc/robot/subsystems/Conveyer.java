@@ -14,9 +14,6 @@ import frc.robot.Constants;
 public class Conveyer extends SubsystemBase {
   private final Victor conveyer;
 
-  /**
-   * Creates a new ExampleSubsystem.
-   */
   public Conveyer() {
     //Initializes the conveyor motor
     conveyer = new Victor(Constants.belt);
