@@ -40,21 +40,37 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public void execute() {
         currentTime = System.currentTimeMillis();
-        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.pivotTime1) {
-            driveChain.driveLeft(Constants.driveSpeed);
-            driveChain.driveRight(-Constants.driveSpeed);
+        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.autoDrive1) {
+            //Move forward
+            driveChain.driveLeft(1);
+            driveChain.driveRight(1);
 
-        } else if (currentTime - startTime >= Constants.pivotTime1 && currentTime - startTime <= Constants.driveTime1) {
-            driveChain.driveLeft(Constants.driveSpeed);
-            driveChain.driveRight(Constants.driveSpeed);
+        } else if (currentTime - startTime >= Constants.autoDrive1 && currentTime - startTime <= Constants.autoTurn2) {
+            //Turn left
+            driveChain.driveLeft(-1);
+            driveChain.driveRight(1);
 
-        } else if (currentTime - startTime >= Constants.driveTime1 && currentTime - startTime <= Constants.pivotTime2) {
-            driveChain.driveLeft(Constants.driveSpeed);
-            driveChain.driveRight(-Constants.driveSpeed);
-        } else if (currentTime - startTime >= Constants.pivotTime2 && currentTime - startTime <= Constants.driveTime2) {
-            driveChain.driveLeft(Constants.driveSpeed);
-            driveChain.driveRight(Constants.driveSpeed);
+        } else if (currentTime - startTime >= Constants.autoTurn2 && currentTime - startTime <= Constants.autoDrive3) {
+            //Move forward
+            driveChain.driveLeft(1);
+            driveChain.driveRight(1);
+        } else if (currentTime - startTime >= Constants.autoDrive3 && currentTime - startTime <= Constants.autoTurn4) {
+            //Turn left
+            driveChain.driveLeft(-1);
+            driveChain.driveRight(1);
+        } else if (currentTime - startTime >= Constants.autoTurn4 && currentTime - startTime <= Constants.autoDrive5) {
+            //Move forward
+            driveChain.driveLeft(1);
+            driveChain.driveRight(1);
+        } else if (currentTime - startTime >= Constants.autoDrive5 && currentTime - startTime <= Constants.autoShoot6) {
+            //Shoot
+            driveChain.stop();
+            shooter.shoot();
         }
+        
+        //Move forward
+
+        //Shoot
 
     }
 
@@ -68,6 +84,6 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
-        return currentTime - startTime >= Constants.endTime;
+        return false;
     }
 }

@@ -62,13 +62,13 @@ public final class Constants {
     public static final int limitSensor = 9;
 
     //Autonomous variables
-    public static final long driveTime1 = 1000;
-    public static final long pivotTime1 = 1500;
-    public static final long driveTime2 = 1000;
-    public static final long pivotTime2 = 1500;
-    public static final long endTime = 3000;
-    public static double driveSpeed = 1;
-    
+    public static final long autoDrive1 = 1000;
+    public static final long autoTurn2 = 1500;
+    public static final long autoDrive3 = 2500;
+    public static final long autoTurn4 = 3000;
+    public static final long autoDrive5 = 4000;
+    public static final long autoShoot6 = 6000;
+
     // time limits
     //Using .6 for 3 balls
     public static final double intakeConveyer = 600;
