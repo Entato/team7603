@@ -7,7 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -106,6 +108,35 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
+    String gameData = DriverStation.getInstance().getGameSpecificMessage();
+    if (gameData.length() > 0) {
+      switch (gameData.charAt(0)) {
+      case 'B':
+        SmartDashboard.putString("ActualColor", "B");
+        SmartDashboard.putString("Color", "R");
+        // Blue case code
+        break;
+      case 'G':
+        SmartDashboard.putString("ActualColor", "G");
+        SmartDashboard.putString("Color", "Y");
+        // Green case code
+        break;
+      case 'R':
+        SmartDashboard.putString("ActualColor", "R");
+        SmartDashboard.putString("Color", "B");
+        // Red case code
+        break;
+      case 'Y':
+        SmartDashboard.putString("ActualColor", "Y");
+        SmartDashboard.putString("Color", "G");
+        // Yellow case code
+        break;
+      default:
+        // This is corrupt data
+        break;
+      }
+    }
   }
 
   @Override
