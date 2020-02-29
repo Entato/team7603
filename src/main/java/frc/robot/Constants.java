@@ -2,7 +2,7 @@ package frc.robot;
 
 public final class Constants {
     // Speed limits
-    public static final double driveLimit = 0.8;
+    public static final double driveLimit = 1;
     public static final double shooterLimit = -0.5;
     public static final double shooterLimitIntake = -0.4;
     public static final double spinnerLimit = 1;
@@ -11,7 +11,7 @@ public final class Constants {
     public static final double winchLimit = 1;
     public static final double conveyerLimit = 1;
     public static final double conveyerReverseLimit = -0.5;
-    public static final double intakeLimit = 0.35;
+    public static final double intakeLimit = 0.5;
 
     // Joystick
     public static final int joystickPort = 0;
@@ -63,11 +63,11 @@ public final class Constants {
 
     //Autonomous variables
     //Drive forward
-    public static final long auto1 = 1000;
+    public static final long auto1 = 3000;
     //Turn left
-    public static final long auto2 = 1500;
+    public static final long auto2 = 6000;
     //Drive forward
-    public static final long auto3 = 2500;
+    public static final long auto3 = 10000;
     //Turn left
     public static final long auto4 = 3000;
     //Drive forward
@@ -81,7 +81,7 @@ public final class Constants {
 
     // time limits
     //Using .6 for 3 balls
-    public static final double intakeConveyer = 600;
+    public static final double intakeConveyer = 200;
     public static final long spinOnce = 2390;
     public static final long spinEighth = 55;
 }

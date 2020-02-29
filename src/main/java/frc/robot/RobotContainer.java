@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController.Axis;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.triggers.*;
@@ -53,7 +54,9 @@ public class RobotContainer {
     // sets the default command for the drive subsystem to the drive command
     // while the drive subsystem is not being used by another command the drive
     // command will be active
-    driveChain.setDefaultCommand(driveCommand);
+    AxisTrigger leftAxis = new AxisTrigger(controller, Constants.axisLY);
+    AxisTrigger rightAxis = new AxisTrigger(controller, Constants.axisRY);
+    leftAxis.or(rightAxis).whileActiveContinuous(driveCommand);
     
     // flip front and back
     JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
