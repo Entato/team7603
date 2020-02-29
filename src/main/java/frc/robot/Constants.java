@@ -62,12 +62,22 @@ public final class Constants {
     public static final int limitSensor = 9;
 
     //Autonomous variables
-    public static final long autoDrive1 = 1000;
-    public static final long autoTurn2 = 1500;
-    public static final long autoDrive3 = 2500;
-    public static final long autoTurn4 = 3000;
-    public static final long autoDrive5 = 4000;
-    public static final long autoShoot6 = 6000;
+    //Drive forward
+    public static final long auto1 = 1000;
+    //Turn left
+    public static final long auto2 = 1500;
+    //Drive forward
+    public static final long auto3 = 2500;
+    //Turn left
+    public static final long auto4 = 3000;
+    //Drive forward
+    public static final long auto5 = 4000;
+    //Shoots
+    public static final long auto6 = 6000;
+    //Drives back
+    public static final long auto7 = 7000;
+    //Stops
+    public static final long auto8 = 7500;
 
     // time limits
     //Using .6 for 3 balls
