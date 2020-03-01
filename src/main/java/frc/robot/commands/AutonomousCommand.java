@@ -29,6 +29,8 @@ public class AutonomousCommand extends CommandBase {
     public AutonomousCommand(Shooter m_shooter, DriveChain m_driveChain) {
         shooter = m_shooter;
         driveChain = m_driveChain;
+        addRequirements(m_shooter);
+        addRequirements(m_driveChain);
     }
 
     // called once and only once when the command is called
