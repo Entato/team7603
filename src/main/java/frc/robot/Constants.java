@@ -63,9 +63,9 @@ public final class Constants {
 
     //Autonomous variables
     //Drive forward
-    public static final long auto1 = 3000;
+    public static final long auto1 = 750;
     //Turn left
-    public static final long auto2 = 6000;
+    public static final long auto2 = 4000;
     //Drive forward
     public static final long auto3 = 10000;
     //Turn left

@@ -46,15 +46,16 @@ public class AutonomousCommand extends CommandBase {
         currentTime = System.currentTimeMillis();
         if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.auto1) {
             //Move forward
-            driveChain.driveLeft(0.8);
-            driveChain.driveRight(0.8);
+            driveChain.driveLeft(0.25);
+            driveChain.driveRight(0.25);
 
-        } else if (currentTime - startTime >= Constants.auto1 && currentTime - startTime <= Constants.auto2) {
+        }/* else if (currentTime - startTime >= Constants.auto1 && currentTime - startTime <= Constants.auto2) {
             //Turn left
+            shooter.shoot();
             driveChain.driveLeft(0.2);
             driveChain.driveRight(0.2);
         }
-            /*
+            
         } else if (currentTime - startTime >= Constants.auto3 && currentTime - startTime <= Constants.auto4) {
             //Turn left
             driveChain.driveLeft(-1);
@@ -88,12 +89,13 @@ public class AutonomousCommand extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         driveChain.stop();
+        shooter.stop();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
-        return (currentTime - startTime) > 10000;
+        return (currentTime - startTime) > Constants.auto1;
     }
 }
