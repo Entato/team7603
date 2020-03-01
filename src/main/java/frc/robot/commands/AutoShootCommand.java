@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.autonomouscommands;
+package frc.robot.commands;
 
 import frc.robot.subsystems.Shooter;
 import frc.robot.Constants;

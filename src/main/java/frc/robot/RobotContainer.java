@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.XboxController.Axis;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.triggers.*;
-import frc.robot.autonomouscommands.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -42,6 +41,12 @@ public class RobotContainer {
   private final NegDriveCommand negDriveCommand = new NegDriveCommand(driveChain);
   private final ReverseIntakeCommand reverseIntakeCommand = new ReverseIntakeCommand(intake, conveyer);
   private final QueueSpinCommand queueSpinCommand = new QueueSpinCommand(spinner);
+
+  //Auto
+  private final DriveForwardCommand forwardCommand = new DriveForwardCommand(driveChain);
+  private final AutoShootCommand autoShootCommand = new AutoShootCommand(shooter, conveyer);
+  private final DriveBackwardCommand backwardCommand = new DriveBackwardCommand(driveChain);
+  private final AutonomousCommand autoCommand = new AutonomousCommand(forwardCommand, autoShootCommand, backwardCommand);
 
   // ignore this for now
   public RobotContainer() {
@@ -128,10 +133,6 @@ public class RobotContainer {
 
   // used for calling the autonomous command
   public Command getAutonomousCommand() {
-    return new SequentialCommandGroup(
-      new DriveForwardCommand(driveChain),
-      new AutoShootCommand(shooter, conveyer),
-      new DriveBackwardCommand(driveChain)
-    );
+    return autoCommand;
   }
 }

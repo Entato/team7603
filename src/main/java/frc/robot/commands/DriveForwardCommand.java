@@ -1,7 +1,8 @@
-package frc.robot.autonomouscommands;
+package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveChain;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 //command object is used for calling the subsystems methods
@@ -15,6 +16,7 @@ public class DriveForwardCommand extends CommandBase {
     public DriveForwardCommand(DriveChain subsystem) {
         driveChain = subsystem;
         addRequirements(subsystem);
+        SmartDashboard.putBoolean("run", true);
     }
 
     // called once and only once when the command is called
