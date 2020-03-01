@@ -51,13 +51,6 @@ public class AutonomousCommand extends CommandBase {
             //Turn left
             driveChain.driveLeft(0.2);
             driveChain.driveRight(0.2);
-            shooter.shoot();
-
-        } else if (currentTime - startTime >= Constants.auto2 && currentTime - startTime <= Constants.auto3) {
-            //Move forward
-            shooter.stop();
-            driveChain.driveLeft(-0.6);
-            driveChain.driveRight(-0.6);
         }
             /*
         } else if (currentTime - startTime >= Constants.auto3 && currentTime - startTime <= Constants.auto4) {
@@ -92,7 +85,7 @@ public class AutonomousCommand extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        
+        driveChain.stop();
     }
 
     // Returns true when the command should end.

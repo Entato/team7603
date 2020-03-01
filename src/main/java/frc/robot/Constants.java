@@ -1,8 +1,8 @@
 package frc.robot;
 
 public final class Constants {
-    // Speed limits
-    public static final double driveLimit = 1;
+    // Speed limits 
+    public static final double driveLimit = 0.85;
     public static final double shooterLimit = -0.5;
     public static final double shooterLimitIntake = -0.4;
     public static final double spinnerLimit = 1;
@@ -21,8 +21,8 @@ public final class Constants {
     public static final int lDrive = 1;
     public static final int rDrive = 3;
     public static final int belt = 8;
-    public static final int winch = 4;
-    public static final int spinner = 2;
+    public static final int winch = 2;
+    public static final int spinner = 11;
     public static final int upperShooter = 6;
     public static final int lowerShooter = 5;
     public static final int intake = 7;
@@ -81,7 +81,7 @@ public final class Constants {
 
     // time limits
     //Using .6 for 3 balls
-    public static final double intakeConveyer = 200;
+    public static final double intakeConveyer = 350;
     public static final long spinOnce = 2390;
     public static final long spinEighth = 55;
 }

@@ -54,10 +54,7 @@ public class RobotContainer {
     // sets the default command for the drive subsystem to the drive command
     // while the drive subsystem is not being used by another command the drive
     // command will be active
-    AxisTrigger leftAxis = new AxisTrigger(controller, Constants.axisLY);
-    AxisTrigger rightAxis = new AxisTrigger(controller, Constants.axisRY);
-    leftAxis.or(rightAxis).whileActiveContinuous(driveCommand);
-    
+  driveChain.setDefaultCommand(driveCommand);    
     // flip front and back
     JoystickButton flipdriveButton = new JoystickButton(controller, Constants.buttonBACK);
     flipdriveButton.whenPressed(negDriveCommand);
