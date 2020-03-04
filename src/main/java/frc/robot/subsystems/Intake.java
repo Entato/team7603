@@ -7,10 +7,9 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,16 +30,16 @@ public class Intake extends SubsystemBase {
 
     public void intake() {
         //Turns the motor on to intake the ball
-        intake.set(Constants.intakeLimit);
+        intake.set(ControlMode.PercentOutput, Constants.intakeLimit);
     }
 
     public void reverse(){
-        intake.set(-Constants.intakeLimit);
+        intake.set(ControlMode.PercentOutput, -Constants.intakeLimit);
     }
 
     public void stop() {
         //Turns the motor off
-        intake.set(0);
+        intake.set(ControlMode.PercentOutput, 0);
     }
 
     public boolean checkBall() {

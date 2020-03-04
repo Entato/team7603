@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -29,17 +29,17 @@ public class Shooter extends SubsystemBase {
 
   public void shoot() {
     //Turns on the shooter motors
-    topShooter.set(-Constants.shooterLimit);
-    bottomShooter.set(-Constants.shooterLimit);
+    topShooter.set(ControlMode.PercentOutput, -Constants.shooterLimit);
+    bottomShooter.set(ControlMode.PercentOutput, -Constants.shooterLimit);
   }
 
   public void intakeHelp() {
-    bottomShooter.set(-Constants.shooterLimitIntake);
+    bottomShooter.set(ControlMode.PercentOutput, -Constants.shooterLimitIntake);
   }
 
   public void stop() {
     //Turns off the shooter motors
-    topShooter.set(0);
-    bottomShooter.set(0);
+    topShooter.set(ControlMode.PercentOutput, 0);
+    bottomShooter.set(ControlMode.PercentOutput, 0);
   }
 }

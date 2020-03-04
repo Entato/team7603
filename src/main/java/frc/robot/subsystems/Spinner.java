@@ -7,10 +7,9 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -27,11 +26,11 @@ public class Spinner extends SubsystemBase {
     }
 
     public void spin() {
-        spinner.set(1);
+        spinner.set(ControlMode.PercentOutput, 1);
     }
 
     public void spinManual(double speed) {
-        spinner.set(speed * Constants.spinnerManualLimit);
+        spinner.set(ControlMode.PercentOutput, speed * Constants.spinnerManualLimit);
     }
 
     public int getSpins() {
@@ -50,7 +49,7 @@ public class Spinner extends SubsystemBase {
 
     public void stopSpin() {
         //Turns the spinner motor off
-        spinner.set(0);
+        spinner.set(ControlMode.PercentOutput, 0);
     }
 
     public boolean getActive(){

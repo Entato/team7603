@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -27,16 +27,16 @@ public class Winch extends SubsystemBase {
 
     public void pull() {
         // Turns the winch on to pull the robot up
-        winch.set(Constants.winchLimit);
+        winch.set(ControlMode.PercentOutput, Constants.winchLimit);
     }
 
     public void release() {
         // Turns the winch in reverse to release the winch
-        winch.set(-Constants.winchLimit);
+        winch.set(ControlMode.PercentOutput, -Constants.winchLimit);
     }
 
     public void stop() {
         // Turns the winch motors off
-        winch.set(0);
+        winch.set(ControlMode.PercentOutput, 0);
     }
 }

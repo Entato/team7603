@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.wpilibj.Victor;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -27,16 +27,16 @@ public class Arm extends SubsystemBase {
 
     public void extend() {
         //Turns the motor on to extend the arm
-        arm.set(Constants.armLimit);
+        arm.set(ControlMode.PercentOutput, Constants.armLimit);
     }
 
     public void retract() {
         //Turns the motor in reverse to pull the arm back
-        arm.set(-Constants.armLimit);
+        arm.set(ControlMode.PercentOutput, -Constants.armLimit);
     }
 
     public void stop() {
         //Turns the winch and arm motors off
-        arm.set(0);
+        arm.set(ControlMode.PercentOutput, 0);
     }
 }

@@ -7,8 +7,8 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,7 +17,7 @@ public class Conveyer extends SubsystemBase {
 
   public Conveyer() {
     //Initializes the conveyor motor
-    conveyer = new VictorSPX Constants.belt);
+    conveyer = new VictorSPX (Constants.belt);
   }
 
   @Override
@@ -27,16 +27,16 @@ public class Conveyer extends SubsystemBase {
 
   public void shift() {
     //Turns the conveyer motor on to push the ball forward
-    conveyer.set(Constants.conveyerLimit);
+    conveyer.set(ControlMode.PercentOutput, Constants.conveyerLimit);
   }
 
   public void reverse() {
     //Turns the conveyer in reverse
-    conveyer.set(Constants.conveyerReverseLimit);
+    conveyer.set(ControlMode.PercentOutput, Constants.conveyerReverseLimit);
   }
 
   public void stop() {
     //Turns the conveyer motor off
-    conveyer.set(0);
+    conveyer.set(ControlMode.PercentOutput, 0);
   }
 }
