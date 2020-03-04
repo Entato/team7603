@@ -10,16 +10,18 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends SubsystemBase {
-    private final Victor intake;
+    private final VictorSPX intake;
     private DigitalInput limit = new DigitalInput(Constants.limitSensor);
 
     public Intake() {
         //Initializes the intake motor
-        intake = new Victor(Constants.intake);
+        intake = new VictorSPX (Constants.intake);
     }
 
     @Override

@@ -10,12 +10,15 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Spinner extends SubsystemBase {
     //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
-    private final Victor spinner = new Victor(Constants.spinner);
+    private final VictorSPX spinner = new VictorSPX (Constants.spinner);
     private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
     private boolean active = false;
     public int spins = 0;

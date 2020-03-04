@@ -7,18 +7,19 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
-  private final Victor topShooter;
-  private final Victor bottomShooter;
+  private final VictorSPX topShooter;
+  private final VictorSPX bottomShooter;
 
   public Shooter() {
     //Initializes two motors to shoot
-    topShooter = new Victor(Constants.upperShooter);
-    bottomShooter = new Victor(Constants.lowerShooter);
+    topShooter = new VictorSPX (Constants.upperShooter);
+    bottomShooter = new VictorSPX (Constants.lowerShooter);
   }
 
   @Override

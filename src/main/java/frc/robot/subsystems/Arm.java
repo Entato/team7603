@@ -7,16 +7,17 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Arm extends SubsystemBase {
-    private final Victor arm;
+    private final VictorSPX arm;
 
     public Arm() {
         //Initializes a motor to control the arm and a motor to control the winch
-        arm = new Victor(Constants.arm);
+        arm = new VictorSPX (Constants.arm);
     }
 
     @Override

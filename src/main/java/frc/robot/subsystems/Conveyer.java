@@ -7,16 +7,17 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Conveyer extends SubsystemBase {
-  private final Victor conveyer;
+  private final VictorSPX conveyer;
 
   public Conveyer() {
     //Initializes the conveyor motor
-    conveyer = new Victor(Constants.belt);
+    conveyer = new VictorSPX Constants.belt);
   }
 
   @Override

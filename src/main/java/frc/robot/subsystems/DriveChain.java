@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -7,13 +9,13 @@ import frc.robot.Constants;
 //create subsystem classes with methods for all the functionality of the subsystem
 //eg drivechain will need to be able to set the speed of the drives
 public class DriveChain extends SubsystemBase {
-  private Victor LDrive;
-  private Victor RDrive;
+  private VictorSPX LDrive;
+  private VictorSPX RDrive;
 
   public DriveChain() {
     //Initializes two motors to control the left and right side of the robot's mobility component
-    LDrive = new Victor(Constants.lDrive);
-    RDrive = new Victor(Constants.rDrive);
+    LDrive = new VictorSPX (Constants.lDrive);
+    RDrive = new VictorSPX (Constants.rDrive);
   }
 
   @Override
