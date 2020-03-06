@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends SubsystemBase {
   private final VictorSPX topShooter;
@@ -30,7 +31,10 @@ public class Shooter extends SubsystemBase {
   public void shoot() {
     //Turns on the shooter motors
     topShooter.set(ControlMode.PercentOutput, -Constants.shooterLimit);
+    SmartDashboard.putNumber("Top shooter", topShooter.getBusVoltage());
     bottomShooter.set(ControlMode.PercentOutput, -Constants.shooterLimit);
+    SmartDashboard.putNumber("Bottom shooter", bottomShooter.getBusVoltage());
+
   }
 
   public void intakeHelp() {

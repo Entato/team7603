@@ -19,14 +19,16 @@ public final class Constants {
 
     // VictorSP ports
     public static final int lDrive = 1;
+    public static final int lDrive2 = 2;
     public static final int rDrive = 3;
-    public static final int belt = 8;
-    public static final int winch = 2;
-    public static final int spinner = 11;
-    public static final int upperShooter = 6;
-    public static final int lowerShooter = 5;
-    public static final int intake = 7;
-    public static final int arm = 0;
+    public static final int rDrive2 = 4;
+    public static final int belt = 5;
+    public static final int winch = 6;
+    public static final int spinner = 7;
+    public static final int upperShooter = 8;
+    public static final int lowerShooter = 9;
+    public static final int intake = 10;
+    public static final int arm = 11;
 
     // controller button values
     public static final int buttonA = 1;
@@ -62,22 +64,20 @@ public final class Constants {
     public static final int limitSensor = 9;
 
     //Autonomous variables
+    //Drive back
+    public static final long auto1 = 4000;
+    //Stop and start shooting
+    public static final long auto2 = 8000;
     //Drive forward
-    public static final long auto1 = 750;
-    //Turn left
-    public static final long auto2 = 4000;
+    public static final long auto3 = 9000;
+    //Stop
+    public static final long auto4 = 10000;
+    
+    //Autonomous #2 variables
     //Drive forward
-    public static final long auto3 = 10000;
-    //Turn left
-    public static final long auto4 = 3000;
-    //Drive forward
-    public static final long auto5 = 4000;
-    //Shoots
-    public static final long auto6 = 6000;
-    //Drives back
-    public static final long auto7 = 7000;
-    //Stops
-    public static final long auto8 = 7500;
+    public static final long autoSneak1 = 8000;
+    //Drive backwards
+    public static final long autoSneak2 = 15000;
 
     // time limits
     //Using .6 for 3 balls

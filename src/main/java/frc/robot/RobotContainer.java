@@ -1,7 +1,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController.Axis;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import frc.robot.triggers.*;
@@ -26,6 +25,7 @@ public class RobotContainer {
 
   // Commands
   private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
+  private final AutonomousSneakCommand autonomousSneakCommand = new AutonomousSneakCommand(intake, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
   private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, joystick);
@@ -124,6 +124,6 @@ public class RobotContainer {
 
   // used for calling the autonomous command
   public Command getAutonomousCommand() {
-    return autonomousCommand;
+    return autonomousSneakCommand;
   }
 }

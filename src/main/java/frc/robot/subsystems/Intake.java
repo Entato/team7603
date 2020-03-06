@@ -31,10 +31,12 @@ public class Intake extends SubsystemBase {
     public void intake() {
         //Turns the motor on to intake the ball
         intake.set(ControlMode.PercentOutput, Constants.intakeLimit);
+        SmartDashboard.putNumber("Intake", intake.getBusVoltage());
     }
 
     public void reverse(){
         intake.set(ControlMode.PercentOutput, -Constants.intakeLimit);
+        SmartDashboard.putNumber("Reverse intake", intake.getBusVoltage());
     }
 
     public void stop() {

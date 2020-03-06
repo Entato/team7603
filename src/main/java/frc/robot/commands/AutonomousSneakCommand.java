@@ -16,10 +16,10 @@ import frc.robot.Constants;
 /**
  * An example command that uses an example subsystem.
  */
-public class AutonomousCommand extends CommandBase {
+public class AutonomousSneakCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
-    Shooter shooter;
+    Intake intake;
     DriveChain driveChain;
     Boolean endCommand = false;
     private long startTime = 0;
@@ -27,11 +27,11 @@ public class AutonomousCommand extends CommandBase {
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public AutonomousCommand(Shooter m_shooter, DriveChain m_driveChain) {
-        shooter = m_shooter;
-        driveChain = m_driveChain;
-        addRequirements(m_shooter);
-        addRequirements(m_driveChain);
+    public AutonomousSneakCommand(Intake intake, DriveChain driveChain) {
+        this.intake = intake;
+        this.driveChain = driveChain;
+        addRequirements(intake);
+        addRequirements(driveChain);
     }
 
     // called once and only once when the command is called
@@ -46,42 +46,32 @@ public class AutonomousCommand extends CommandBase {
     public void execute() {
         currentTime = System.currentTimeMillis();
         SmartDashboard.putNumber("Current Time Auto", currentTime);
-        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.auto1) {
-            // Move back
-            driveChain.driveLeft(-0.25);
-            driveChain.driveRight(-0.25);
+        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.autoSneak1) {
+            // Move forward
+            driveChain.driveLeft(0.8);
+            driveChain.driveRight(0.8);
+            intake.intake();
         } 
         
-        if (currentTime - startTime >= Constants.auto1 && currentTime - startTime <= Constants.auto2) {
-            // Shoot
-            driveChain.stop();
-            shooter.shoot();
+        if (currentTime - startTime >= Constants.autoSneak1 && currentTime - startTime <= Constants.autoSneak2) {
+            // Move backwards
+            driveChain.driveLeft(-0.8);
+            driveChain.driveRight(-0.8);
+            intake.stop();
         } 
-        
-        if (currentTime - startTime >= Constants.auto2 && currentTime - startTime <= Constants.auto3) {
-            // Moves forward
-            driveChain.driveLeft(0.25);
-            driveChain.driveRight(0.25);
-            shooter.stop();
-        } 
-        
-        if (currentTime - startTime >= Constants.auto3 && currentTime - startTime <= Constants.auto4) {
-            // Stops driving
-            driveChain.stop();
-        }
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
         driveChain.stop();
-        shooter.stop();
+        intake.stop();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
         currentTime = System.currentTimeMillis();
-        return (currentTime - startTime) > Constants.auto4;
+        return (currentTime - startTime) > Constants.autoSneak2;
     }
 }

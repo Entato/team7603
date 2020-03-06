@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -27,10 +26,13 @@ public class Spinner extends SubsystemBase {
 
     public void spin() {
         spinner.set(ControlMode.PercentOutput, 1);
+        SmartDashboard.putNumber("Spinner", spinner.getBusVoltage());
+
     }
 
     public void spinManual(double speed) {
         spinner.set(ControlMode.PercentOutput, speed * Constants.spinnerManualLimit);
+        SmartDashboard.putNumber("Spinner manual", spinner.getMotorOutputVoltage());
     }
 
     public int getSpins() {
