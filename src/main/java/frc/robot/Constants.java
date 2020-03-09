@@ -7,7 +7,7 @@ public final class Constants {
     public static final double shooterLimitIntake = -0.4;
     public static final double spinnerLimit = 1;
     public static final double spinnerManualLimit = 0.5;
-    public static final double armLimit = 1;
+    public static final double armLimit = 0.5;
     public static final double winchLimit = 1;
     public static final double conveyerLimit = 1;
     public static final double conveyerReverseLimit = -0.5;
