@@ -27,7 +27,8 @@ public class ReverseIntakeCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // Intake motor is always on
+    // Spits the balls out if the balls get jammed
+    // Sets the intake and conveyer motors in reverse in order
     intake.reverse();
     conveyer.reverse();
   }
@@ -40,6 +41,7 @@ public class ReverseIntakeCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    // Stops the intake and conveyer motors
     intake.stop();
     conveyer.stop();
   }

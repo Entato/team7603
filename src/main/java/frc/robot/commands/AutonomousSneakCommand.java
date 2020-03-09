@@ -8,8 +8,6 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 
@@ -37,28 +35,30 @@ public class AutonomousSneakCommand extends CommandBase {
     // called once and only once when the command is called
     @Override
     public void initialize() {
+        // Starts a timer
         startTime = System.currentTimeMillis();
-        SmartDashboard.putNumber("Start Time Auto", startTime);
     }
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
+        // Timer is updated with the variable 'currentTime'
         currentTime = System.currentTimeMillis();
-        SmartDashboard.putNumber("Current Time Auto", currentTime);
+        // Within the specified amount of time, methods will be called to complete
+        // specific tasks
         if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.autoSneak1) {
             // Move forward
             driveChain.driveLeft(0.8);
             driveChain.driveRight(0.8);
             intake.intake();
-        } 
-        
+        }
+
         if (currentTime - startTime >= Constants.autoSneak1 && currentTime - startTime <= Constants.autoSneak2) {
             // Move backwards
             driveChain.driveLeft(-0.8);
             driveChain.driveRight(-0.8);
             intake.stop();
-        } 
+        }
     }
 
     // Called once the command ends or is interrupted.
@@ -71,7 +71,10 @@ public class AutonomousSneakCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
+        // Timer is updated with the variable 'currentTime'
         currentTime = System.currentTimeMillis();
+        // Checks if the amount of time the command has been called for is greater than
+        // or equal to the set time of the autonomousSneak command (autoSneak2)
         return (currentTime - startTime) > Constants.autoSneak2;
     }
 }

@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //create subsystem classes with methods for all the functionality of the subsystem
 //eg drivechain will need to be able to set the speed of the drives
@@ -32,7 +31,6 @@ public class DriveChain extends SubsystemBase {
     //Controls speed of left drive motor through controller input
     LDrive.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
     LDrive2.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
-    SmartDashboard.putNumber("Drive left", LDrive.getBusVoltage());
   }
 
   // sets the right drive of the robot
@@ -40,7 +38,6 @@ public class DriveChain extends SubsystemBase {
     //Controls speed of right drive motor through controller input
     RDrive.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
     RDrive2.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
-    SmartDashboard.putNumber("Drive right", RDrive.getBusVoltage());
   }
 
   public void swapLeftRight(){

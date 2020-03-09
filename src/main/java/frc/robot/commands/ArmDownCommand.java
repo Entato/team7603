@@ -35,7 +35,7 @@ public class ArmDownCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    // Sets the arm motor (winch motor already set to 0)
+    // Stops the arm motor
     arm.stop();
   }
 

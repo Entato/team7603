@@ -17,20 +17,18 @@ public class QueueSpinCommand extends CommandBase {
     // called once and only once when the command is called
     @Override
     public void initialize() {
+        // Adds 1 to the spin queue
         spinner.addSpins();
     }
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
-    
     }
 
     // called once the command ends
     @Override
     public void end(boolean interrupted) {
-        
-
     }
 
     // logic to check if the command is finished

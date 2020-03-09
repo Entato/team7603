@@ -23,6 +23,7 @@ public class LiftSpinnerCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // Flips the spinner up/down depending on its position
     if (!lift.getActive()) {
       lift.upLift();
     } else if (lift.getActive()) {

@@ -29,17 +29,15 @@ public class SpinEighthCommand extends CommandBase {
     // called once and only once when the command is called
     @Override
     public void initialize() {
+        // Starts a timer
         startTime = System.currentTimeMillis();
     }
 
     // called many times over while the command is active (50hz)
     @Override
     public void execute() {
+        // Turns the spinner motor on
         spinner.spin();
-        currentTime = System.currentTimeMillis();
-        if(currentTime - startTime >= Constants.spinEighth) {
-            spinner.stopSpin();
-        }
     }
 
     // Called once the command ends or is interrupted.
@@ -51,6 +49,10 @@ public class SpinEighthCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
+        // Timer is updated with the variable 'currentTime'
+        currentTime = System.currentTimeMillis();
+        // Checks if the amount of time the command has been called for is greater than
+        // or equal to the set time of the spinsEighth command
         return currentTime - startTime >= Constants.spinEighth;
     }
 }

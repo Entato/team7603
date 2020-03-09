@@ -17,6 +17,8 @@ public class NegDriveCommand extends CommandBase {
   // called once and only once when the command is called
   @Override
   public void initialize() {
+    // Flips the left and right drive which allows the robot to be driven
+    // forward/backwards
     driveChain.swapLeftRight();
   }
 
@@ -28,7 +30,6 @@ public class NegDriveCommand extends CommandBase {
   // called once the command ends
   @Override
   public void end(boolean interrupted) {
-    // Stops the drive motors
   }
 
   // logic to check if the command is finished

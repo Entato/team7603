@@ -11,8 +11,6 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 
 public class Arm extends SubsystemBase {
     private final VictorSPX arm;
@@ -30,13 +28,11 @@ public class Arm extends SubsystemBase {
     public void extend() {
         //Turns the motor on to extend the arm
         arm.set(ControlMode.PercentOutput, Constants.armLimit);
-        SmartDashboard.putNumber("Arm thing extend", arm.getBusVoltage());
     }
 
     public void retract() {
         //Turns the motor in reverse to pull the arm back
         arm.set(ControlMode.PercentOutput, -Constants.armLimit);
-        SmartDashboard.putNumber("Arm thing retract", arm.getBusVoltage());
     }
 
     public void stop() {

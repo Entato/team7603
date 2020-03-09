@@ -23,8 +23,8 @@ public class ReleaseWinchCommand extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        // Method for the winch
-        winch.pull();
+        // Releases the winch (rope gets longer)
+        winch.release();
     }
 
     // Called every time the scheduler runs while the command is scheduled.

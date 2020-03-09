@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Conveyer extends SubsystemBase {
   private final VictorSPX conveyer;
@@ -29,13 +28,11 @@ public class Conveyer extends SubsystemBase {
   public void shift() {
     //Turns the conveyer motor on to push the ball forward
     conveyer.set(ControlMode.PercentOutput, Constants.conveyerLimit);
-    SmartDashboard.putNumber("Conveyer thing shift", conveyer.getBusVoltage());
   }
 
   public void reverse() {
     //Turns the conveyer in reverse
     conveyer.set(ControlMode.PercentOutput, Constants.conveyerReverseLimit);
-    SmartDashboard.putNumber("Conveyer thing reverse", conveyer.getBusVoltage());
   }
 
   public void stop() {

@@ -30,6 +30,7 @@ public class ShootCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // Shoots the ball by turning on the shooter and conveyer motors
     conveyer.shift();
     shooter.shoot();
   }
@@ -42,6 +43,7 @@ public class ShootCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    // Stops the shooter and conveyer motors
     shooter.stop();
     conveyer.stop();
   }

@@ -12,7 +12,6 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Intake extends SubsystemBase {
     private final VictorSPX intake;
@@ -31,12 +30,10 @@ public class Intake extends SubsystemBase {
     public void intake() {
         //Turns the motor on to intake the ball
         intake.set(ControlMode.PercentOutput, Constants.intakeLimit);
-        SmartDashboard.putNumber("Intake", intake.getBusVoltage());
     }
 
     public void reverse(){
         intake.set(ControlMode.PercentOutput, -Constants.intakeLimit);
-        SmartDashboard.putNumber("Reverse intake", intake.getBusVoltage());
     }
 
     public void stop() {
@@ -46,7 +43,6 @@ public class Intake extends SubsystemBase {
 
     public boolean checkBall() {
         //Checks if a ball triggers the sensor and returns a boolean value
-        SmartDashboard.putBoolean("Value of Sensor", limit.get());
         //Currently returns false if sensor is pressed
         return limit.get();
     }

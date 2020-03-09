@@ -26,13 +26,10 @@ public class Spinner extends SubsystemBase {
 
     public void spin() {
         spinner.set(ControlMode.PercentOutput, 1);
-        SmartDashboard.putNumber("Spinner", spinner.getBusVoltage());
-
     }
 
     public void spinManual(double speed) {
         spinner.set(ControlMode.PercentOutput, speed * Constants.spinnerManualLimit);
-        SmartDashboard.putNumber("Spinner manual", spinner.getMotorOutputVoltage());
     }
 
     public int getSpins() {
