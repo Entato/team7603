@@ -14,7 +14,7 @@ import frc.robot.Constants;
 /**
  * An example command that uses an example subsystem.
  */
-public class AutonomousSneakCommand extends CommandBase {
+public class AutonomousBoringCommand extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
     Intake intake;
@@ -25,7 +25,7 @@ public class AutonomousSneakCommand extends CommandBase {
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public AutonomousSneakCommand(Intake intake, DriveChain driveChain) {
+    public AutonomousBoringCommand(Intake intake, DriveChain driveChain) {
         this.intake = intake;
         this.driveChain = driveChain;
         addRequirements(intake);
@@ -46,18 +46,10 @@ public class AutonomousSneakCommand extends CommandBase {
         currentTime = System.currentTimeMillis();
         // Within the specified amount of time, methods will be called to complete
         // specific tasks
-        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.autoSneak1) {
+        if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.autoBoring1) {
             // Move forward
-            driveChain.driveLeft(0.8);
-            driveChain.driveRight(0.8);
-            intake.intake();
-        }
-
-        if (currentTime - startTime >= Constants.autoSneak1 && currentTime - startTime <= Constants.autoSneak2) {
-            // Move backwards
-            driveChain.driveLeft(-0.8);
-            driveChain.driveRight(-0.8);
-            intake.stop();
+            driveChain.driveLeft(0.5);
+            driveChain.driveRight(0.5);
         }
     }
 
@@ -75,6 +67,6 @@ public class AutonomousSneakCommand extends CommandBase {
         currentTime = System.currentTimeMillis();
         // Checks if the amount of time the command has been called for is greater than
         // or equal to the set time of the autonomousSneak command (autoSneak2)
-        return (currentTime - startTime) > Constants.autoSneak2;
+        return (currentTime - startTime) > Constants.autoBoring1;
     }
 }

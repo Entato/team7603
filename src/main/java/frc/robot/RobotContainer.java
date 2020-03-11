@@ -24,8 +24,8 @@ public class RobotContainer {
   private final Winch winch = new Winch();
 
   // Commands
-  private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain);
-  private final AutonomousSneakCommand autonomousSneakCommand = new AutonomousSneakCommand(intake, driveChain);
+  private final AutonomousCommand autonomousCommand = new AutonomousCommand(shooter, driveChain, conveyer);
+  private final AutonomousBoringCommand autonomousBoringCommand = new AutonomousBoringCommand(intake, driveChain);
   private final SpinEighthCommand spinEighthCommand = new SpinEighthCommand(spinner);
   private final SpinOnceCommand spinOnceCommand = new SpinOnceCommand(spinner);
   private final SpinManualCommand spinManualCommand = new SpinManualCommand(spinner, joystick);
@@ -34,6 +34,7 @@ public class RobotContainer {
   private final IntakeCommand intakeCommand = new IntakeCommand(intake);
   private final ConveyerCommand conveyerCommand = new ConveyerCommand(conveyer, shooter);
   private final ArmDownCommand armDownCommand = new ArmDownCommand(arm);
+  private final ArmDownSlowCommand armDownSlowCommand = new ArmDownSlowCommand(arm);
   private final ArmUpCommand armUpCommand = new ArmUpCommand(arm);
   private final ExtractWinchCommand extractWinchCommand = new ExtractWinchCommand(winch);
   private final ReleaseWinchCommand releaseWinchCommand = new ReleaseWinchCommand(winch);
@@ -92,6 +93,10 @@ public class RobotContainer {
     JoystickButton armDownButton = new JoystickButton(joystick, 3);
     armDownButton.whenHeld(armDownCommand);
 
+    // arm down (Slower)
+    JoystickButton armDownSlowButton = new JoystickButton(joystick, 5);
+    armDownSlowButton.whenHeld(armDownSlowCommand);
+
     // arm up
     JoystickButton armUpButton = new JoystickButton(joystick, 4);
     armUpButton.whenHeld(armUpCommand);
@@ -124,6 +129,6 @@ public class RobotContainer {
 
   // used for calling the autonomous command
   public Command getAutonomousCommand() {
-    return autonomousSneakCommand;
+    return autonomousCommand;
   }
 }

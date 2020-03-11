@@ -27,12 +27,17 @@ public class Arm extends SubsystemBase {
 
     public void extend() {
         //Turns the motor on to extend the arm
-        arm.set(ControlMode.PercentOutput, Constants.armLimit);
+        arm.set(ControlMode.PercentOutput, Constants.armUpLimit);
     }
 
     public void retract() {
-        //Turns the motor in reverse to pull the arm back
-        arm.set(ControlMode.PercentOutput, -Constants.armLimit);
+        //Turns the motor in reverse to pull the arm down
+        arm.set(ControlMode.PercentOutput, -Constants.armDownpLimit);
+    }
+
+    public void retractSlow() {
+        //Turns the motor in reverse to pull the arm down
+        arm.set(ControlMode.PercentOutput, -Constants.armDownpLimitSlow);
     }
 
     public void stop() {

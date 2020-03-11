@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Spinner extends SubsystemBase {
     //Initializes the color sensor, spinner motor and solenoid to lift up the spinner motor/color sensor
     private final VictorSPX spinner = new VictorSPX (Constants.spinner);
-    private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 3);
+    private final DoubleSolenoid solenoid = new DoubleSolenoid(0, 1);
     private boolean active = false;
     public int spins = 0;
 

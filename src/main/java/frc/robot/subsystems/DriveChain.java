@@ -29,8 +29,8 @@ public class DriveChain extends SubsystemBase {
   // sets the left drive of the robot
   public void driveLeft(double speed) {
     //Controls speed of left drive motor through controller input
-    LDrive.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
-    LDrive2.set(ControlMode.PercentOutput, speed * Constants.driveLimit);
+    LDrive.set(ControlMode.PercentOutput, -speed * Constants.driveLimit);
+    LDrive2.set(ControlMode.PercentOutput, -speed * Constants.driveLimit);
   }
 
   // sets the right drive of the robot

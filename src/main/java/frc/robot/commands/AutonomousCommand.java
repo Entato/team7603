@@ -19,17 +19,19 @@ public class AutonomousCommand extends CommandBase {
 
     Shooter shooter;
     DriveChain driveChain;
+    Conveyer conveyer;
     Boolean endCommand = false;
     private long startTime = 0;
     private long currentTime = 0;
 
     // commands must take in a parameter of the subsystems they are using so they
     // can access their methods
-    public AutonomousCommand(Shooter m_shooter, DriveChain m_driveChain) {
-        shooter = m_shooter;
-        driveChain = m_driveChain;
-        addRequirements(m_shooter);
-        addRequirements(m_driveChain);
+    public AutonomousCommand(Shooter shooter, DriveChain driveChain, Conveyer conveyer) {
+        this.shooter = shooter;
+        this.driveChain = driveChain;
+        this.conveyer = conveyer;
+        addRequirements(shooter);
+        addRequirements(driveChain);
     }
 
     // called once and only once when the command is called
@@ -48,19 +50,21 @@ public class AutonomousCommand extends CommandBase {
         // specific tasks
         if (currentTime - startTime >= 0 && currentTime - startTime <= Constants.auto1) {
             // Move back
-            driveChain.driveLeft(-0.25);
-            driveChain.driveRight(-0.25);
+            driveChain.driveLeft(0.4);
+            driveChain.driveRight(0.4);
         }
         if (currentTime - startTime >= Constants.auto1 && currentTime - startTime <= Constants.auto2) {
             // Shoot
             driveChain.stop();
+            conveyer.shift();
             shooter.shoot();
         }
         if (currentTime - startTime >= Constants.auto2 && currentTime - startTime <= Constants.auto3) {
             // Moves forward
-            driveChain.driveLeft(0.25);
-            driveChain.driveRight(0.25);
+            driveChain.driveLeft(-0.4);
+            driveChain.driveRight(-0.4);
             shooter.stop();
+            conveyer.stop();
         }
         if (currentTime - startTime >= Constants.auto3 && currentTime - startTime <= Constants.auto4) {
             // Stops driving
